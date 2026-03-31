@@ -11,6 +11,9 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  // Split into rows: 2 / 3 / 2
+  const rows = [services.slice(0, 2), services.slice(2, 5), services.slice(5, 7)];
+
   return (
     <section id="storitve" className="py-24 md:py-32 bg-secondary/50">
       <div className="container">
@@ -23,15 +26,26 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {services.map((s) => (
+        <div className="max-w-5xl mx-auto space-y-6">
+          {rows.map((row, ri) => (
             <div
-              key={s.title}
-              className="bg-card rounded-lg p-6 border border-border hover:border-primary/30 transition-colors duration-300"
+              key={ri}
+              className={`grid gap-6 ${
+                row.length === 3
+                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:max-w-[66%] lg:mx-auto"
+              }`}
             >
-              <s.icon className="w-5 h-5 text-accent mb-4" strokeWidth={1.5} />
-              <h3 className="font-heading text-lg font-medium text-foreground mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              {row.map((s) => (
+                <div
+                  key={s.title}
+                  className="bg-card rounded-lg p-6 border border-border hover:border-primary/30 transition-colors duration-300 flex flex-col"
+                >
+                  <s.icon className="w-5 h-5 text-accent mb-4" strokeWidth={1.5} />
+                  <h3 className="font-heading text-lg font-medium text-foreground mb-2">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                </div>
+              ))}
             </div>
           ))}
         </div>
