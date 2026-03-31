@@ -1,15 +1,28 @@
-import galleryExterior from "@/assets/gallery-exterior.jpg";
-import galleryInterior from "@/assets/gallery-interior.jpg";
-import galleryBeforeAfter from "@/assets/gallery-before-after.jpg";
-import galleryPolishing from "@/assets/gallery-polishing.jpg";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
+import gallery7 from "@/assets/gallery-7.jpg";
+import gallery8 from "@/assets/gallery-8.jpg";
+import gallery9 from "@/assets/gallery-9.jpg";
+import gallery10 from "@/assets/gallery-10.jpg";
 
 const images = [
-  { src: galleryExterior, alt: "Ročno čiščenje zunanjosti vozila", wide: true },
-  { src: galleryInterior, alt: "Čiščenje notranjosti vozila", wide: false },
-  { src: galleryPolishing, alt: "Poliranje avtomobila", wide: false },
-  { src: galleryBeforeAfter, alt: "Rezultat čiščenja – pred in po", wide: true },
+  { src: gallery1, alt: "Ročno pranje zunanjosti vozila" },
+  { src: gallery2, alt: "Notranjost vozila po čiščenju" },
+  { src: gallery3, alt: "Poliranje avtomobila" },
+  { src: gallery4, alt: "Čisti usnjeni sedeži" },
+  { src: gallery5, alt: "Čiščenje platišč" },
+  { src: gallery6, alt: "Detajl laka po poliranju" },
+  { src: gallery7, alt: "Čiščenje notranjosti z razpršilcem" },
+  { src: gallery8, alt: "Obnovljeni žarometi" },
+  { src: gallery9, alt: "Urejen prtljažni prostor" },
+  { src: gallery10, alt: "Končni rezultat detailinga" },
 ];
 
+// Layout: row1=3, row2=2, row3=3, row4=2 for a balanced asymmetric feel
 const GallerySection = () => {
   return (
     <section className="py-24 md:py-32 bg-secondary/50">
@@ -23,26 +36,48 @@ const GallerySection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-          {images.map((img, i) => (
-            <div
-              key={i}
-              className={`overflow-hidden rounded-lg ${img.wide ? "md:col-span-2" : ""}`}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading="lazy"
-                width={1280}
-                height={960}
-                className="w-full h-64 md:h-80 object-cover hover:scale-[1.02] transition-transform duration-500"
-              />
-            </div>
-          ))}
+        <div className="max-w-6xl mx-auto space-y-4">
+          {/* Row 1: 3 images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {images.slice(0, 3).map((img, i) => (
+              <GalleryImage key={i} {...img} />
+            ))}
+          </div>
+          {/* Row 2: 2 images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {images.slice(3, 5).map((img, i) => (
+              <GalleryImage key={i} {...img} />
+            ))}
+          </div>
+          {/* Row 3: 3 images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {images.slice(5, 8).map((img, i) => (
+              <GalleryImage key={i} {...img} />
+            ))}
+          </div>
+          {/* Row 4: 2 images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {images.slice(8, 10).map((img, i) => (
+              <GalleryImage key={i} {...img} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
+const GalleryImage = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="overflow-hidden rounded-lg">
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      width={960}
+      height={720}
+      className="w-full h-56 md:h-72 object-cover hover:scale-[1.02] transition-transform duration-500"
+    />
+  </div>
+);
 
 export default GallerySection;

@@ -4,14 +4,30 @@ import before2 from "@/assets/before-2.jpg";
 import after2 from "@/assets/after-2.jpg";
 import before3 from "@/assets/before-3.jpg";
 import after3 from "@/assets/after-3.jpg";
+import BeforeAfterSlider from "./BeforeAfterSlider";
 
-const images = [
-  { src: before1, label: "Before", alt: "Umazano vozilo pred čiščenjem" },
-  { src: after1, label: "After", alt: "Čisto vozilo po čiščenju" },
-  { src: before2, label: "Before", alt: "Notranjost pred čiščenjem" },
-  { src: after2, label: "After", alt: "Notranjost po čiščenju" },
-  { src: before3, label: "Before", alt: "Žarometi pred obnovo" },
-  { src: after3, label: "After", alt: "Žarometi po obnovi" },
+const comparisons = [
+  {
+    before: before1,
+    after: after1,
+    beforeAlt: "Umazano vozilo pred čiščenjem",
+    afterAlt: "Čisto vozilo po čiščenju",
+    title: "Zunanje pranje",
+  },
+  {
+    before: before2,
+    after: after2,
+    beforeAlt: "Notranjost pred čiščenjem",
+    afterAlt: "Notranjost po čiščenju",
+    title: "Notranje čiščenje",
+  },
+  {
+    before: before3,
+    after: after3,
+    beforeAlt: "Žarometi pred obnovo",
+    afterAlt: "Žarometi po obnovi",
+    title: "Obnova žarometov",
+  },
 ];
 
 const BeforeAfterSection = () => {
@@ -27,28 +43,9 @@ const BeforeAfterSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          {images.map((img, i) => (
-            <div key={i} className="relative overflow-hidden rounded-lg group">
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading="lazy"
-                width={800}
-                height={600}
-                className="w-full h-64 md:h-72 object-cover group-hover:scale-[1.02] transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <span
-                className={`absolute bottom-4 left-4 text-xs font-medium tracking-widest uppercase px-3 py-1 rounded ${
-                  img.label === "Before"
-                    ? "bg-muted/80 text-muted-foreground"
-                    : "bg-primary/80 text-primary-foreground"
-                }`}
-              >
-                {img.label}
-              </span>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {comparisons.map((comp, i) => (
+            <BeforeAfterSlider key={i} {...comp} />
           ))}
         </div>
       </div>
