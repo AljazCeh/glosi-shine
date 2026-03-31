@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoSrc from "../assets/logoglosi.png";
 
 const navLinks = [
   { label: "Domov", href: "#domov" },
@@ -15,8 +16,14 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between h-16">
-        <a href="#domov" className="font-heading text-lg font-semibold tracking-wide text-foreground">
-          Glosi
+        <a href="#domov" className="flex items-center gap-2" aria-label="Avtopralnica Glosi - domov">
+          <img
+            src={logoSrc}
+            alt="Avtopralnica Glosi logo"
+            className="max-h-10 w-auto object-contain"
+            loading="eager"
+            decoding="async"
+          />
         </a>
 
         {/* Desktop */}

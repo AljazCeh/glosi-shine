@@ -9,10 +9,15 @@ const HeroSection = () => {
         alt="Profesionalno ročno pranje avtomobila"
         width={1920}
         height={1080}
+        loading="eager"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-background/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-background/70 pointer-events-none transition-all duration-700" />
+      {/* Subtle bottom fade into next section */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
 
       <div className="relative z-10 container text-center px-6 py-32 md:py-0">
         <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6">

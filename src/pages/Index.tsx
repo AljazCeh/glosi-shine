@@ -16,7 +16,7 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <SectionDivider fromDark={false} />
+        <SectionDivider fromDark={true} />
         <AboutSection />
         <SectionDivider fromDark={false} />
         <ServicesSection />
