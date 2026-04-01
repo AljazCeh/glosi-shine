@@ -126,24 +126,37 @@ const ServiceDetailPage = () => {
           </div>
         </section>
 
-        {/* Additional Services Section (only show for main service page) */}
-        {slug === "zunanje-ciscenje" && (
-          <section className="py-16 md:py-24 bg-muted/50 border-t border-border">
+        {/* Additional Services Section */}
+        {additionalServices && additionalServices.length > 0 && (
+          <section className="py-16 md:py-20 border-t border-border">
             <div className="container">
               <div className="max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">
-                  Ostale storitve
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                  Dodatne storitve
                 </h2>
+                <div className="h-1 w-12 bg-primary rounded-full mb-10"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {additionalServices.map((service, idx) => (
-                    <div key={idx} className="bg-card border border-border rounded-lg p-6 hover:border-primary/30 transition-colors">
-                      <h3 className="font-semibold text-foreground mb-2">{service.name}</h3>
-                      <p className="text-2xl font-bold text-primary">
-                        {service.priceNote ? service.priceNote : `€${service.price}`}
-                      </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {additionalServices.map((svc, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-4 bg-muted/40 border border-border rounded-lg hover:border-primary/50 transition-colors"
+                    >
+                      <span className="text-sm md:text-base text-foreground font-medium">
+                        {svc.name}
+                      </span>
+                      <span className="text-lg md:text-xl font-bold text-primary whitespace-nowrap ml-4">
+                        {svc.priceNote ? svc.priceNote : `${svc.price}€`}
+                      </span>
                     </div>
                   ))}
+                </div>
+
+                <div className="mt-8 p-4 bg-muted/30 border border-border rounded-lg">
+                  <p className="text-xs md:text-sm text-muted-foreground italic">
+                    Cene veljajo za obratovanje na našem mestu. Pri prevzemu vozila na domu primenjujemo dodatni prevozni stroški.
+                    Za posebne okolišči nam prosim pokličejo ali pošljete povpraševanje. Prinaša se tudi ročin nasproti DGV.
+                  </p>
                 </div>
               </div>
             </div>

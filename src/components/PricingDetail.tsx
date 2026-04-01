@@ -1,49 +1,50 @@
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ServiceDetail, VehicleCategory } from "@/data/services";
-import { Check } from "lucide-react";
+import { ServiceDetail } from "@/data/services";
+import { Check, Droplets, Wind, Sparkles, CircleDot, Lightbulb, Fan, Sofa } from "lucide-react";
 
 interface PricingDetailProps {
   service: ServiceDetail;
   onContactClick?: () => void;
 }
 
+const iconMap: Record<string, React.ComponentType<any>> = {
+  Droplets,
+  Wind,
+  Sparkles,
+  CircleDot,
+  Lightbulb,
+  Fan,
+  Sofa,
+};
+
 export const PricingDetail = ({ service, onContactClick }: PricingDetailProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>(
     service.vehicleCategories[0]?.value || "all"
   );
 
-  // Handle services without vehicle categories
   const categories = service.vehicleCategories.length > 0 ? service.vehicleCategories : [];
   const showCategoryTabs = categories.length > 0;
 
-  const getCategoryLabel = (value: string) => {
-    return categories.find((c) => c.value === value)?.label || value;
-  };
-
   const formatPrice = (price: number) => {
-    return `€${price}`;
+    return price;
   };
 
   return (
     <div className="w-full">
-      {/* Category Selector */}
+      {/* Category Tabs - Horizontal like reference */}
       {showCategoryTabs && (
         <div className="mb-12">
-          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-6">
-            Izbira velikosti vozila
-          </h3>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-0 justify-start border-b-2 border-muted">
             {categories.map((category) => (
               <button
                 key={category.value}
                 onClick={() => setSelectedCategory(category.value)}
-                className={`px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`px-4 py-3 text-sm font-semibold transition-all ${
                   selectedCategory === category.value
-                    ? "bg-primary text-primary-foreground shadow-lg scale-105"
-                    : "border-2 border-border bg-background text-foreground hover:border-primary/50 hover:bg-muted/50"
+                    ? "text-primary border-b-2 border-b-primary -mb-0.5"
+                    : "text-muted-foreground border-b-2 border-b-transparent hover:text-foreground"
                 }`}
               >
                 {category.label}
@@ -53,102 +54,95 @@ export const PricingDetail = ({ service, onContactClick }: PricingDetailProps) =
         </div>
       )}
 
-      {/* Pricing Packages */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+      {/* Pricing Packages - Horizontal layout like reference */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         {service.packages.map((pkg, index) => {
-          // Find the price for selected category
           const selectedPrice = pkg.pricing.find((p) => p.category === selectedCategory || p.category === "all");
           const price = selectedPrice?.price;
+          const IconComponent = iconMap[service.icon];
 
           return (
             <div
               key={index}
-              className={`relative rounded-xl border-2 transition-all duration-300 overflow-hidden group ${
+              className={`relative rounded-lg border-2 transition-all overflow-hidden flex flex-col h-full ${
                 pkg.featured
-                  ? "border-primary bg-gradient-to-br from-primary/5 via-card to-card shadow-xl hover:shadow-2xl scale-100 md:scale-105 md:col-span-2 md:w-1/2 md:mx-auto"
-                  : "border-border bg-card hover:border-primary/50 hover:shadow-lg"
+                  ? "border-primary bg-gradient-to-b from-blue-900/30 to-card shadow-lg"
+                  : "border-slate-700 bg-slate-900 hover:border-primary/50 hover:shadow-md"
               }`}
             >
               {/* Featured Badge */}
               {pkg.featured && (
-                <div className="absolute top-0 right-0 z-10">
-                  <Badge className="rounded-none rounded-bl-xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-semibold text-xs px-3 py-1">
-                    Najbolj priljubljeno
-                  </Badge>
+                <div className="absolute top-0 left-0 right-0 z-10">
+                  <div className="w-full bg-primary text-primary-foreground font-bold text-center py-1.5 text-xs uppercase">
+                    Najbol-i<br/>priljubljeno
+                  </div>
                 </div>
               )}
 
-              <div className="p-7 md:p-9">
+              <div className={`p-5 flex flex-col h-full ${pkg.featured ? "pt-14" : "pt-5"}`}>
+                {/* Icon */}
+                {IconComponent && (
+                  <div className="flex justify-center mb-4">
+                    <IconComponent className="w-11 h-11 text-primary" strokeWidth={1.5} />
+                  </div>
+                )}
+
                 {/* Package Name */}
-                <h3 className={`font-bold text-foreground mb-3 ${
-                  pkg.featured ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
-                }`}>
+                <h3 className="text-center font-bold text-foreground mb-4 text-base  uppercase tracking-wide">
                   {pkg.name}
                 </h3>
 
                 {/* Price */}
-                <div className="mb-8">
+                <div className="text-center mb-6">
                   {price !== undefined && price !== 0 ? (
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <span className={`font-bold text-primary ${
-                        pkg.featured ? "text-5xl" : "text-4xl"
-                      }`}>
-                        {formatPrice(price)}
-                      </span>
+                    <div className="text-4xl font-bold text-primary">
+                      {formatPrice(price)} €
                     </div>
                   ) : (
-                    <div className="text-lg text-muted-foreground italic font-medium">
-                      Po dogovoru
-                    </div>
+                    <div className="text-base text-muted-foreground italic">Po dogovoru</div>
                   )}
-                  <p className="text-sm text-muted-foreground">za storitev</p>
                 </div>
 
-                {/* Divider */}
-                <div className="h-px bg-gradient-to-r from-border via-border to-transparent mb-8"></div>
-
                 {/* What's Included */}
-                <div className="mb-10">
-                  <h4 className="text-sm font-bold text-foreground uppercase tracking-widest mb-5">
-                    Vključeno
-                  </h4>
-                  <ul className="space-y-3.5">
+                <div className="mb-6 flex-grow">
+                  <ul className="space-y-2">
                     {pkg.includes.map((item, idx) => (
-                      <li key={idx} className="flex gap-3 items-start group/item">
-                        <div className="flex-shrink-0 mt-1 rounded-full bg-primary/20 p-1 group-hover/item:bg-primary/30 transition-colors">
-                          <Check className="w-4 h-4 text-primary" strokeWidth={2.5} />
-                        </div>
-                        <span className="text-sm text-foreground leading-relaxed">
-                          {item}
-                        </span>
+                      <li key={idx} className="flex gap-2 items-start text-xs text-foreground leading-tight">
+                        <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* CTA Button */}
-                <Button
-                  onClick={onContactClick}
-                  size="lg"
-                  className={`w-full font-semibold py-3 h-auto ${
-                    pkg.featured
-                      ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl"
-                      : "bg-secondary hover:bg-secondary/90 text-foreground border-2 border-border hover:border-primary/50"
-                  }`}
-                >
-                  Pošlji povpraševanje
-                </Button>
+                {/* CTA Buttons */}
+                <div className="flex flex-col gap-2 mt-auto pt-4 border-t border-slate-700">
+                  <Button
+                    onClick={onContactClick}
+                    size="sm"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-2 h-auto text-xs"
+                  >
+                    Naročilo se
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={onContactClick}
+                    className="w-full text-foreground border-slate-700 hover:border-primary/50 hover:bg-slate-800 py-2 h-auto text-xs font-semibold"
+                  >
+                    Več info?
+                  </Button>
+                </div>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Divider for additional info */}
+      {/* Additional Info */}
       {service.additionalInfo && (
-        <div className="mt-12 p-6 md:p-8 rounded-xl bg-muted/50 border-2 border-border">
-          <p className="text-sm text-foreground italic leading-relaxed">
-            <span className="font-semibold block mb-2">Dodatne informacije:</span>
+        <div className="p-6 rounded-lg bg-muted/30 border border-border mb-12">
+          <p className="text-sm text-foreground italic">
             {service.additionalInfo}
           </p>
         </div>
