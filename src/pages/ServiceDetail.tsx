@@ -113,12 +113,25 @@ const ServiceDetailPage = () => {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-16 md:py-24">
-          <div className="container">
-            <div className="max-w-5xl">
-              <div className="mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Cenik</h2>
-                <div className="h-1 w-12 bg-primary rounded-full"></div>
+        <section className="relative py-20 md:py-28 overflow-hidden">
+          {/* Dark Background with Car Image */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-950/95 z-0"></div>
+          <div className="absolute inset-0 opacity-20 z-0" style={{
+            backgroundImage: 'url(/hero-car-BTyg7RAy.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+          }}></div>
+
+          <div className="container relative z-10">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12 md:mb-16">
+                <p className="text-cyan-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-3">
+                  Pravno da bomo presegil vata pričakovanja
+                </p>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
+                  Cenik
+                </h2>
               </div>
 
               <PricingDetail service={service} onContactClick={handleContactClick} />
@@ -128,32 +141,32 @@ const ServiceDetailPage = () => {
 
         {/* Additional Services Section */}
         {additionalServices && additionalServices.length > 0 && (
-          <section className="py-16 md:py-20 border-t border-border">
+          <section className="py-16 md:py-20 bg-slate-900/50 border-t border-slate-700/60">
             <div className="container">
               <div className="max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
                   Dodatne storitve
                 </h2>
-                <div className="h-1 w-12 bg-primary rounded-full mb-10"></div>
+                <div className="h-1 w-12 bg-cyan-400 rounded-full mb-10"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {additionalServices.map((svc, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-4 bg-muted/40 border border-border rounded-lg hover:border-primary/50 transition-colors"
+                      className="flex items-center justify-between p-5 bg-slate-800/40 border border-slate-700/50 rounded-lg hover:border-cyan-500/40 hover:bg-slate-800/60 transition-all"
                     >
-                      <span className="text-sm md:text-base text-foreground font-medium">
+                      <span className="text-sm md:text-base text-slate-200 font-medium">
                         {svc.name}
                       </span>
-                      <span className="text-lg md:text-xl font-bold text-primary whitespace-nowrap ml-4">
+                      <span className="text-lg md:text-xl font-bold text-cyan-400 whitespace-nowrap ml-4">
                         {svc.priceNote ? svc.priceNote : `${svc.price}€`}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 p-4 bg-muted/30 border border-border rounded-lg">
-                  <p className="text-xs md:text-sm text-muted-foreground italic">
+                <div className="mt-8 p-5 bg-slate-800/30 border border-slate-700/60 rounded-lg">
+                  <p className="text-xs md:text-sm text-slate-400 italic leading-relaxed">
                     Cene veljajo za obratovanje na našem mestu. Pri prevzemu vozila na domu primenjujemo dodatni prevozni stroški.
                     Za posebne okolišči nam prosim pokličejo ali pošljete povpraševanje. Prinaša se tudi ročin nasproti DGV.
                   </p>

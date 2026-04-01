@@ -33,18 +33,18 @@ export const PricingDetail = ({ service, onContactClick }: PricingDetailProps) =
 
   return (
     <div className="w-full">
-      {/* Category Tabs - Horizontal like reference */}
+      {/* Category Tabs */}
       {showCategoryTabs && (
-        <div className="mb-12">
-          <div className="flex flex-wrap gap-0 justify-start border-b-2 border-muted">
+        <div className="mb-8">
+          <div className="flex flex-wrap gap-0 border-b border-slate-600">
             {categories.map((category) => (
               <button
                 key={category.value}
                 onClick={() => setSelectedCategory(category.value)}
-                className={`px-4 py-3 text-sm font-semibold transition-all ${
+                className={`px-3 py-2 text-xs sm:text-sm font-medium transition-all border-b-2 ${
                   selectedCategory === category.value
-                    ? "text-primary border-b-2 border-b-primary -mb-0.5"
-                    : "text-muted-foreground border-b-2 border-b-transparent hover:text-foreground"
+                    ? "text-cyan-400 border-b-cyan-400"
+                    : "text-slate-400 border-b-transparent hover:text-slate-300"
                 }`}
               >
                 {category.label}
@@ -54,8 +54,8 @@ export const PricingDetail = ({ service, onContactClick }: PricingDetailProps) =
         </div>
       )}
 
-      {/* Pricing Packages - Horizontal layout like reference */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+      {/* Pricing Packages Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
         {service.packages.map((pkg, index) => {
           const selectedPrice = pkg.pricing.find((p) => p.category === selectedCategory || p.category === "all");
           const price = selectedPrice?.price;
@@ -64,71 +64,75 @@ export const PricingDetail = ({ service, onContactClick }: PricingDetailProps) =
           return (
             <div
               key={index}
-              className={`relative rounded-lg border-2 transition-all overflow-hidden flex flex-col h-full ${
+              className={`relative flex flex-col rounded-xl overflow-hidden transition-all h-full ${
                 pkg.featured
-                  ? "border-primary bg-gradient-to-b from-blue-900/30 to-card shadow-lg"
-                  : "border-slate-700 bg-slate-900 hover:border-primary/50 hover:shadow-md"
+                  ? "border-2 border-cyan-500 bg-gradient-to-b from-slate-800/60 to-slate-900/80 shadow-xl shadow-cyan-500/20"
+                  : "border border-slate-700/60 bg-slate-900/50 hover:border-slate-600 hover:bg-slate-900/70"
               }`}
             >
               {/* Featured Badge */}
               {pkg.featured && (
-                <div className="absolute top-0 left-0 right-0 z-10">
-                  <div className="w-full bg-primary text-primary-foreground font-bold text-center py-1.5 text-xs uppercase">
-                    Najbol-i<br/>priljubljeno
+                <div className="absolute top-0 left-0 right-0 z-20">
+                  <div className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-center py-1.5 text-xs uppercase tracking-wider">
+                    Najbol-i<br />priljubljeno
                   </div>
                 </div>
               )}
 
-              <div className={`p-5 flex flex-col h-full ${pkg.featured ? "pt-14" : "pt-5"}`}>
+              {/* Card Content */}
+              <div className={`p-5 sm:p-6 flex flex-col h-full ${pkg.featured ? "pt-16" : ""}`}>
                 {/* Icon */}
                 {IconComponent && (
                   <div className="flex justify-center mb-4">
-                    <IconComponent className="w-11 h-11 text-primary" strokeWidth={1.5} />
+                    <div className="bg-slate-800/50 rounded-full p-4">
+                      <IconComponent className="w-10 h-10 text-white" strokeWidth={1.5} />
+                    </div>
                   </div>
                 )}
 
-                {/* Package Name */}
-                <h3 className="text-center font-bold text-foreground mb-4 text-base  uppercase tracking-wide">
+                {/* Title */}
+                <h3 className="text-center font-bold text-white mb-4 text-sm sm:text-base uppercase tracking-tight leading-snug">
                   {pkg.name}
                 </h3>
 
                 {/* Price */}
                 <div className="text-center mb-6">
                   {price !== undefined && price !== 0 ? (
-                    <div className="text-4xl font-bold text-primary">
-                      {formatPrice(price)} €
+                    <div className="text-5xl sm:text-4xl font-bold text-white">
+                      {formatPrice(price)} <span className="text-3xl">€</span>
                     </div>
                   ) : (
-                    <div className="text-base text-muted-foreground italic">Po dogovoru</div>
+                    <div className="text-base text-slate-400 italic">Po dogovoru</div>
                   )}
                 </div>
 
-                {/* What's Included */}
+                {/* Features List */}
                 <div className="mb-6 flex-grow">
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {pkg.includes.map((item, idx) => (
-                      <li key={idx} className="flex gap-2 items-start text-xs text-foreground leading-tight">
-                        <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                      <li key={idx} className="flex gap-2.5 items-start text-xs sm:text-sm text-slate-200 leading-snug">
+                        <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" strokeWidth={3} />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
+                {/* Divider */}
+                <div className="mb-4 h-px bg-slate-700/50"></div>
+
                 {/* CTA Buttons */}
-                <div className="flex flex-col gap-2 mt-auto pt-4 border-t border-slate-700">
+                <div className="flex flex-col gap-2.5">
                   <Button
                     onClick={onContactClick}
-                    size="sm"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-2 h-auto text-xs"
+                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-2.5 h-auto text-sm rounded-lg transition-colors"
                   >
                     Naročilo se
                   </Button>
                   <Button
                     variant="outline"
-                    size="sm"
                     onClick={onContactClick}
-                    className="w-full text-foreground border-slate-700 hover:border-primary/50 hover:bg-slate-800 py-2 h-auto text-xs font-semibold"
+                    className="w-full border-cyan-500/60 text-cyan-400 hover:border-cyan-400 hover:bg-cyan-500/10 font-semibold py-2.5 h-auto text-sm rounded-lg border-2 transition-colors"
                   >
                     Več info?
                   </Button>
@@ -139,10 +143,10 @@ export const PricingDetail = ({ service, onContactClick }: PricingDetailProps) =
         })}
       </div>
 
-      {/* Additional Info */}
+      {/* Additional Info Box */}
       {service.additionalInfo && (
-        <div className="p-6 rounded-lg bg-muted/30 border border-border mb-12">
-          <p className="text-sm text-foreground italic">
+        <div className="p-5 rounded-lg bg-slate-800/40 border border-slate-700/60 mb-12">
+          <p className="text-xs sm:text-sm text-slate-300 italic leading-relaxed">
             {service.additionalInfo}
           </p>
         </div>
