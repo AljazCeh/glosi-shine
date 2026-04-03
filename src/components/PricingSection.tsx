@@ -200,11 +200,7 @@ const PricingSection = () => {
                         }`}
                       >
                         {isFeatured && (
-                          <div className="absolute right-0 top-0 z-20">
-                            <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-white to-slate-300 px-4 py-2 text-xs font-bold text-slate-950">
-                              Največkrat izbrano
-                            </Badge>
-                          </div>
+                          
                         )}
 
                         <div className={`p-5 md:p-6 ${isFeatured ? "pt-14 md:pt-16" : ""}`}>
@@ -307,11 +303,7 @@ const PricingSection = () => {
                     }`}
                   >
                     {pkg.featured && (
-                      <div className="absolute right-0 top-0 z-20">
-                        <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-white to-slate-300 px-4 py-2 text-xs font-bold text-slate-950">
-                          Priporočeno
-                        </Badge>
-                      </div>
+                      
                     )}
 
                     <div className={`p-6 md:p-7 ${pkg.featured ? "pt-14 md:pt-16" : ""}`}>
