@@ -111,7 +111,7 @@ const PricingSection = () => {
   return (
     <section
       id="cenik"
-      className="relative overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_32%),linear-gradient(180deg,rgba(3,3,4,0.98),rgba(8,8,10,0.98)_45%,rgba(14,14,16,0.98))] py-16 md:py-28"
+      className="relative overflow-hidden py-14 md:py-24"
     >
       <div className="absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-background via-background/75 to-transparent" />
       <div
