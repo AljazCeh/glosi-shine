@@ -66,10 +66,10 @@ const BUSINESS_DESCRIPTION =
   "Podjetjem in obrtnikom z večjim voznim parkom nudimo celovito skrb za čistočo vozil. Kontaktirajte nas in naredili bomo ponudbo, prilagojeno vašim željam in potrebam.";
 
 const sectionShellClass =
-  "rounded-[1.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.78),rgba(15,23,42,0.58))] p-5 shadow-[0_24px_80px_-48px_rgba(2,6,23,0.95)] backdrop-blur-sm md:p-8";
+  "relative overflow-hidden rounded-[1.9rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-5 shadow-[0_28px_80px_-52px_rgba(0,0,0,0.95)] backdrop-blur-sm before:absolute before:inset-x-10 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent md:p-8";
 
 const subtlePanelClass =
-  "rounded-[1.35rem] border border-white/10 bg-slate-950/35 shadow-[0_18px_40px_-30px_rgba(2,6,23,0.95)]";
+  "rounded-[1.35rem] border border-white/8 bg-black/20 shadow-[0_18px_40px_-32px_rgba(0,0,0,0.95)]";
 
 const PricingSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("small");
@@ -109,23 +109,27 @@ const PricingSection = () => {
   };
 
   return (
-    <section id="cenik" className="relative overflow-hidden py-16 md:py-28">
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+    <section
+      id="cenik"
+      className="relative overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_32%),linear-gradient(180deg,rgba(3,3,4,0.98),rgba(8,8,10,0.98)_45%,rgba(14,14,16,0.98))] py-16 md:py-28"
+    >
+      <div className="absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-background via-background/75 to-transparent" />
       <div
-        className="absolute inset-0 z-0 opacity-15"
+        className="absolute inset-0 z-0 opacity-10 mix-blend-luminosity"
         style={{
           backgroundImage: "url(/hero-car-BTyg7RAy.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          filter: "grayscale(1) contrast(1.05) brightness(0.42)",
         }}
       />
-      <div className="absolute inset-x-0 top-20 z-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.14),_transparent_68%)]" />
-      <div className="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-b from-transparent to-slate-950/70" />
+      <div className="absolute inset-x-0 top-20 z-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.07),_transparent_68%)]" />
+      <div className="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-b from-transparent via-background/70 to-background" />
 
       <div className="relative z-10">
         <div className="container">
           <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-cyan-400 sm:text-sm">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-primary sm:text-sm">
               Transparentne cene • Kakovostne storitve
             </p>
             <h2 className="mb-4 text-5xl font-bold leading-tight text-white md:text-7xl">CENIK</h2>
@@ -135,7 +139,7 @@ const PricingSection = () => {
           </div>
 
           <div className="mx-auto mb-8 max-w-6xl md:mb-10">
-            <div className="rounded-[1.75rem] border border-white/10 bg-slate-900/65 p-2 shadow-[0_18px_50px_-32px_rgba(2,6,23,0.95)] backdrop-blur-sm">
+            <div className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-2 shadow-[0_18px_50px_-32px_rgba(0,0,0,0.95)] backdrop-blur-sm">
               <div className="overflow-x-auto -mx-2 px-2 md:mx-0 md:px-0">
                 <div className="flex min-w-max gap-2 md:min-w-0 md:flex-wrap md:justify-center">
                   {vehicleCategories.map((category) => (
@@ -146,8 +150,8 @@ const PricingSection = () => {
                       onClick={() => setSelectedCategory(category.value)}
                       className={`rounded-2xl border px-4 py-3 text-xs font-semibold whitespace-nowrap transition-all duration-300 sm:text-sm md:px-5 ${
                         selectedCategory === category.value
-                          ? "border-cyan-300/70 bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/30"
-                          : "border-white/10 bg-slate-950/35 text-slate-300 hover:border-cyan-400/35 hover:bg-slate-800/80 hover:text-white"
+                          ? "border-white/20 bg-primary text-primary-foreground shadow-[0_14px_30px_-18px_rgba(255,255,255,0.42)]"
+                          : "border-white/8 bg-black/20 text-slate-300 hover:border-white/15 hover:bg-white/[0.05] hover:text-white"
                       }`}
                     >
                       {category.label}
@@ -162,7 +166,7 @@ const PricingSection = () => {
             <div className={sectionShellClass}>
               <div className="mb-6 flex flex-col gap-4 md:mb-8 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-2xl">
-                  <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-400/85">
+                  <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                     Izbrane storitve
                   </p>
                   <h3 className="mt-2 text-2xl font-bold text-white md:text-3xl">Glavni paketi</h3>
@@ -172,7 +176,7 @@ const PricingSection = () => {
                   </p>
                 </div>
 
-                <div className="inline-flex w-fit rounded-full border border-white/10 bg-slate-950/45 px-4 py-2 text-sm text-slate-200 shadow-inner shadow-white/5">
+                <div className="inline-flex w-fit rounded-full border border-white/8 bg-black/25 px-4 py-2 text-sm text-slate-200 shadow-inner shadow-white/5">
                   {selectedCategoryLabel}
                 </div>
               </div>
@@ -191,13 +195,13 @@ const PricingSection = () => {
                       <div
                         className={`group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border transition-all duration-300 hover:-translate-y-1 ${
                           isFeatured
-                            ? "border-cyan-400/65 bg-[linear-gradient(180deg,rgba(8,47,73,0.5),rgba(2,6,23,0.92))] shadow-[0_24px_60px_-34px_rgba(34,211,238,0.4)]"
-                            : "border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.92),rgba(2,6,23,0.88))] shadow-[0_24px_60px_-34px_rgba(2,6,23,0.95)] hover:border-cyan-400/30"
+                            ? "border-white/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] shadow-[0_28px_70px_-40px_rgba(255,255,255,0.12)]"
+                            : "border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01))] shadow-[0_24px_60px_-36px_rgba(0,0,0,0.95)] hover:border-white/15"
                         }`}
                       >
                         {isFeatured && (
                           <div className="absolute right-0 top-0 z-20">
-                            <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-cyan-500 to-sky-400 px-4 py-2 text-xs font-bold text-slate-950">
+                            <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-white to-slate-300 px-4 py-2 text-xs font-bold text-slate-950">
                               Največkrat izbrano
                             </Badge>
                           </div>
@@ -209,22 +213,22 @@ const PricingSection = () => {
                               <div
                                 className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${
                                   isFeatured
-                                    ? "border-cyan-400/25 bg-cyan-400/10"
-                                    : "border-white/10 bg-slate-950/45"
+                                    ? "border-white/15 bg-white/[0.06]"
+                                    : "border-white/8 bg-black/25"
                                 }`}
                               >
-                                <IconComponent className="h-5 w-5 text-cyan-300" strokeWidth={1.8} />
+                                <IconComponent className="h-5 w-5 text-primary" strokeWidth={1.8} />
                               </div>
                             )}
 
                             {service.duration && (
-                              <span className="rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-300">
+                              <span className="rounded-full border border-white/8 bg-black/25 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-300">
                                 {service.duration}
                               </span>
                             )}
                           </div>
 
-                          <h3 className="text-2xl font-bold leading-tight text-white transition-colors group-hover:text-cyan-100">
+                          <h3 className="text-2xl font-bold leading-tight text-white transition-colors group-hover:text-primary">
                             {service.title}
                           </h3>
                           <p className="mt-3 text-sm leading-6 text-slate-300/90">
@@ -232,7 +236,7 @@ const PricingSection = () => {
                           </p>
 
                           <div className={`${subtlePanelClass} mt-5 px-4 py-4`}>
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-400/85">
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                               Cena
                             </p>
                             {price !== null ? (
@@ -244,7 +248,7 @@ const PricingSection = () => {
                                 >
                                   {price}
                                 </span>
-                                <span className="pb-1 text-xl font-semibold text-cyan-300">€</span>
+                                <span className="pb-1 text-xl font-semibold text-primary">€</span>
                               </div>
                             ) : (
                               <p className="mt-2 text-base italic text-slate-400">Po dogovoru</p>
@@ -253,7 +257,7 @@ const PricingSection = () => {
 
                           {service.packages[0]?.includes && (
                             <div className={`${subtlePanelClass} mt-5 p-4`}>
-                              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-400/85">
+                              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                                 Vključeno
                               </p>
                               <ul className="space-y-2.5 text-sm">
@@ -263,7 +267,7 @@ const PricingSection = () => {
                                     className="flex items-start gap-2.5 text-slate-300"
                                   >
                                     <Check
-                                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400"
+                                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
                                       strokeWidth={3}
                                     />
                                     <span className="leading-snug">{item}</span>
@@ -282,7 +286,7 @@ const PricingSection = () => {
 
             <div className={sectionShellClass}>
               <div className="mb-6 text-center md:mb-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-400/85">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Poglobljena nega
                 </p>
                 <h3 className="mt-2 text-2xl font-bold text-white md:text-3xl">Globinsko čiščenje</h3>
@@ -298,13 +302,13 @@ const PricingSection = () => {
                     key={pkg.name}
                     className={`relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border transition-all duration-300 hover:-translate-y-1 ${
                       pkg.featured
-                        ? "border-cyan-400/65 bg-[linear-gradient(180deg,rgba(8,47,73,0.5),rgba(2,6,23,0.92))] shadow-[0_24px_60px_-34px_rgba(34,211,238,0.4)]"
-                        : "border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.92),rgba(2,6,23,0.88))] shadow-[0_24px_60px_-34px_rgba(2,6,23,0.95)] hover:border-cyan-400/30"
+                        ? "border-white/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] shadow-[0_28px_70px_-40px_rgba(255,255,255,0.12)]"
+                        : "border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01))] shadow-[0_24px_60px_-36px_rgba(0,0,0,0.95)] hover:border-white/15"
                     }`}
                   >
                     {pkg.featured && (
                       <div className="absolute right-0 top-0 z-20">
-                        <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-cyan-500 to-sky-400 px-4 py-2 text-xs font-bold text-slate-950">
+                        <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-white to-slate-300 px-4 py-2 text-xs font-bold text-slate-950">
                           Priporočeno
                         </Badge>
                       </div>
@@ -315,21 +319,21 @@ const PricingSection = () => {
                       <p className="mt-3 text-sm leading-6 text-slate-300/90">{pkg.description}</p>
 
                       <div className={`${subtlePanelClass} mt-5 px-4 py-4`}>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-400/85">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                           Paket
                         </p>
-                        <p className="mt-2 text-3xl font-bold text-cyan-300 md:text-4xl">{pkg.price}</p>
+                        <p className="mt-2 text-3xl font-bold text-primary md:text-4xl">{pkg.price}</p>
                       </div>
 
                       <div className={`${subtlePanelClass} mt-5 p-4`}>
-                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-400/85">
+                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                           Vključeno
                         </p>
                         <ul className="space-y-2.5 text-sm">
                           {pkg.includes.map((item, index) => (
                             <li key={index} className="flex items-start gap-2.5 text-slate-300">
                               <Check
-                                className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400"
+                                className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
                                 strokeWidth={3}
                               />
                               <span className="leading-snug">{item}</span>
@@ -345,7 +349,7 @@ const PricingSection = () => {
 
             <div className={sectionShellClass}>
               <div className="mb-6 text-center md:mb-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-400/85">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Fleksibilne možnosti
                 </p>
                 <h3 className="mt-2 text-2xl font-bold text-white md:text-3xl">Dodatna pomoč za dom in vozilo</h3>
@@ -367,7 +371,7 @@ const PricingSection = () => {
                 </div>
 
                 <div className={`${subtlePanelClass} flex h-full flex-col p-6 md:p-7`}>
-                  <div className="inline-flex w-fit rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-200">
+                  <div className="inline-flex w-fit rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-100">
                     Na vašem naslovu
                   </div>
                   <h4 className="mt-4 text-2xl font-bold text-white">Čiščenje sedežnih garnitur na domu</h4>
@@ -377,28 +381,28 @@ const PricingSection = () => {
                   </p>
                   <ul className="mt-5 space-y-2.5 text-sm">
                     <li className="flex items-start gap-2.5 text-slate-300">
-                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400" strokeWidth={3} />
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" strokeWidth={3} />
                       Odstranjevanje bakterij in pršic
                     </li>
                     <li className="flex items-start gap-2.5 text-slate-300">
-                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400" strokeWidth={3} />
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" strokeWidth={3} />
                       Čiščenje trdovratnih madeža
                     </li>
                     <li className="flex items-start gap-2.5 text-slate-300">
-                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400" strokeWidth={3} />
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" strokeWidth={3} />
                       Odstranjevanje neprijetnih vonjev
                     </li>
                   </ul>
-                  <p className="mt-5 text-base font-bold text-cyan-300">Po dogovoru</p>
+                  <p className="mt-5 text-base font-bold text-primary">Po dogovoru</p>
                 </div>
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-[linear-gradient(135deg,rgba(15,23,42,0.94),rgba(8,47,73,0.7))] p-6 shadow-[0_28px_80px_-40px_rgba(34,211,238,0.35)] md:p-9">
-              <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.18),_transparent_70%)] lg:block" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.018))] p-6 shadow-[0_28px_80px_-40px_rgba(0,0,0,0.95)] md:p-9">
+              <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.08),_transparent_70%)] lg:block" />
               <div className="relative grid gap-6 lg:grid-cols-[1.25fr_0.85fr] lg:items-center">
                 <div className="max-w-2xl">
-                  <Badge className="mb-4 rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-1.5 text-cyan-100">
+                  <Badge className="mb-4 rounded-full border border-white/10 bg-white/[0.05] px-4 py-1.5 text-slate-100">
                     Za podjetja
                   </Badge>
                   <h3 className="text-2xl font-bold text-white md:text-3xl">Za podjetja</h3>
@@ -408,7 +412,7 @@ const PricingSection = () => {
                 </div>
 
                 <div className="rounded-[1.5rem] border border-white/10 bg-slate-950/35 p-6 shadow-[0_18px_40px_-30px_rgba(2,6,23,0.95)] backdrop-blur-sm">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                     Prilagojena ponudba
                   </p>
                   <p className="mt-3 text-sm leading-6 text-slate-300">
@@ -420,7 +424,7 @@ const PricingSection = () => {
                     <a href="#kontakt" className="sm:flex-1">
                       <Button
                         size="lg"
-                        className="w-full gap-2 bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25 hover:bg-cyan-300"
+                        className="w-full gap-2 bg-primary text-primary-foreground shadow-lg shadow-white/10 hover:bg-primary/90"
                       >
                         <Mail className="h-5 w-5" />
                         Pošlji povpraševanje
@@ -430,7 +434,7 @@ const PricingSection = () => {
                       <Button
                         variant="outline"
                         size="lg"
-                        className="w-full gap-2 border-cyan-300/40 bg-slate-950/30 text-cyan-100 hover:bg-cyan-500/10 hover:text-white"
+                        className="w-full gap-2 border-white/15 bg-black/20 text-white hover:bg-white/[0.05]"
                       >
                         <Phone className="h-5 w-5" />
                         Pokličite nas
@@ -443,7 +447,7 @@ const PricingSection = () => {
 
             <div className={sectionShellClass}>
               <div className="mb-6 text-center md:mb-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-400/85">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Dopolnilna nega
                 </p>
                 <h3 className="mt-2 text-2xl font-bold text-white md:text-3xl">Dodatne storitve</h3>
@@ -456,14 +460,14 @@ const PricingSection = () => {
                 {ADDITIONAL_SERVICES.map((service, index) => (
                   <div
                     key={index}
-                    className={`${subtlePanelClass} flex h-full flex-col justify-between p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:bg-slate-900/80`}
+                    className={`${subtlePanelClass} flex h-full flex-col justify-between p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.04]`}
                   >
                     <p className="mb-4 text-sm leading-6 text-slate-200">{service.name}</p>
                     <div className="flex items-end justify-between gap-3">
                       <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
                         Cena
                       </span>
-                      <p className="text-2xl font-bold text-cyan-300">
+                      <p className="text-2xl font-bold text-primary">
                         {service.priceNote || `${service.price}€`}
                       </p>
                     </div>
@@ -474,7 +478,7 @@ const PricingSection = () => {
 
             <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.8),rgba(15,23,42,0.62))] px-6 py-8 shadow-[0_24px_80px_-48px_rgba(2,6,23,0.95)] backdrop-blur-sm md:px-10 md:py-10">
               <div className="mx-auto max-w-3xl text-center">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-400/85">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Kontakt
                 </p>
                 <h3 className="mt-2 text-2xl font-bold text-white md:text-3xl">Ste zainteresirani?</h3>
@@ -486,7 +490,7 @@ const PricingSection = () => {
                   <a href="tel:068172230" className="sm:flex-1 sm:max-w-[240px]">
                     <Button
                       size="lg"
-                      className="w-full gap-2 bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25 hover:bg-cyan-300"
+                      className="w-full gap-2 bg-primary text-primary-foreground shadow-lg shadow-white/10 hover:bg-primary/90"
                     >
                       <Phone className="h-5 w-5" />
                       Pokličite nas
@@ -496,7 +500,7 @@ const PricingSection = () => {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="w-full gap-2 border-cyan-300/40 bg-slate-950/30 text-cyan-100 hover:bg-cyan-500/10 hover:text-white"
+                      className="w-full gap-2 border-white/15 bg-black/20 text-white hover:bg-white/[0.05]"
                     >
                       <Mail className="h-5 w-5" />
                       Pošlji povpraševanje
