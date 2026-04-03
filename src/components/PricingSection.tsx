@@ -148,7 +148,7 @@ const PricingSection = () => {
                     {isFeatured && (
                       <div className="absolute top-0 right-0 z-20">
                         <Badge className="rounded-none rounded-bl-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-xs px-4 py-2">
-                          Najpopularnije
+                          Največkrat izbrano
                         </Badge>
                       </div>
                     )}

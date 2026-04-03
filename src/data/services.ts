@@ -265,12 +265,12 @@ export const services: ServiceDetail[] = [
 export const additionalServices = [
   { name: "Osnovno hitro čiščenje notranjosti", price: 10 },
   { name: "Spiranje vozila", price: 7 },
-  { name: "Čiščenje sedeža (1 kos)", price: 10 },
-  { name: "Čiščenje sedežev (5 kos)", price: 40 },
+  { name: "Globinsko čiščenje sedeža (1 kos)", price: 10 },
+  { name: "Globinsko čiščenje sedežev (5 kosov)", price: 40 },
   { name: "Zaščita usnjenih sedežev", price: 10 },
   { name: "Prevzem vozila na domu (do 5 km iz Ivančne Gorice)", price: 5 },
   { name: "Izposoja nadomestnega vozila", price: 5 },
-  { name: "Obnova žarometov + dolgotrajna zaščita para", price: 50, priceNote: "50–60€" },
+  { name: "Obnova žarometov + dolgotrajna zaščita (2 kosa)", price: 50, priceNote: "50–60€" },
   { name: "Dezinfekcija z ozonom / dezinfekcija klime", price: 15 },
   { name: "Poliranje vozila", price: 130, priceNote: "130–180€" },
 ];
