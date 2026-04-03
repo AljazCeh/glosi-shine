@@ -19,7 +19,6 @@ const MAIN_SERVICES = [
 ];
 
 const ADDITIONAL_SERVICES = [
-  { name: "Osnovno hitro čiščenje notranjosti", price: 10 },
   { name: "Spiranje vozila", price: 7 },
   { name: "Čiščenje sedeža (1 kos)", price: 10 },
   { name: "Čiščenje sedežev (5 kos)", price: 40 },

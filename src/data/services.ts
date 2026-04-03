@@ -263,7 +263,6 @@ export const services: ServiceDetail[] = [
 ];
 
 export const additionalServices = [
-  { name: "Osnovno hitro čiščenje notranjosti", price: 10 },
   { name: "Spiranje vozila", price: 7 },
   { name: "Globinsko čiščenje sedeža (1 kos)", price: 10 },
   { name: "Globinsko čiščenje sedežev (5 kosov)", price: 40 },
