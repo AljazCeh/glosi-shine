@@ -127,7 +127,7 @@ const PricingSection = () => {
           </div>
 
           <div className="mx-auto mb-8 max-w-6xl md:mb-10">
-            <div className="rounded-[1.75rem] border border-border/50 bg-card/40 p-2 shadow-md backdrop-blur-sm">
+            <div className="rounded-2xl border border-border/50 bg-card/40 p-2 shadow-md backdrop-blur-sm">
               <div className="overflow-x-auto -mx-2 px-2 md:mx-0 md:px-0">
                 <div className="flex min-w-max gap-2 md:min-w-0 md:flex-wrap md:justify-center">
                   {vehicleCategories.map((category) => (
@@ -181,10 +181,10 @@ const PricingSection = () => {
                       className={getMainCardPlacementClass(visibleMainServices.length)}
                     >
                       <div
-                        className={`group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border transition-all duration-300 hover:-translate-y-1 ${
+                        className={`group relative flex h-full flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 ${
                           isFeatured
-                            ? "border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] shadow-lg"
-                            : "border-border/50 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01))] shadow-md hover:border-border/80"
+                            ? "border-border bg-card/80 shadow-lg"
+                            : "border-border/50 bg-card/50 shadow-md hover:border-border/80"
                         }`}
                       >
                     
@@ -281,10 +281,10 @@ const PricingSection = () => {
                 {DEEP_CLEANING_PACKAGES.map((pkg) => (
                   <article
                     key={pkg.name}
-                    className={`relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border transition-all duration-300 hover:-translate-y-1 ${
+                    className={`relative flex h-full flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 ${
                       pkg.featured
-                        ? "border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] shadow-lg"
-                        : "border-border/50 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01))] shadow-md hover:border-border/80"
+                        ? "border-border bg-card/80 shadow-lg"
+                        : "border-border/50 bg-card/50 shadow-md hover:border-border/80"
                     }`}
                   >
 
@@ -339,7 +339,7 @@ const PricingSection = () => {
                     Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in
                     vzmetnice.
                   </p>
-                  <div className="mt-5 rounded-[1.15rem] border border-border/60 bg-secondary/60 px-4 py-3 text-sm text-muted-foreground">
+                  <div className="mt-5 rounded-lg border border-border/60 bg-secondary/60 px-4 py-3 text-sm text-muted-foreground">
                     V ceno je vključeno čistilo in krtača.
                   </div>
                 </div>
@@ -372,7 +372,7 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.018))] p-6 shadow-lg md:p-9">
+            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-6 shadow-lg md:p-9">
               <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.08),_transparent_70%)] lg:block" />
               <div className="relative grid gap-6 lg:grid-cols-[1.25fr_0.85fr] lg:items-center">
                 <div className="max-w-2xl">
@@ -385,7 +385,7 @@ const PricingSection = () => {
                   </p>
                 </div>
 
-                <div className="rounded-[1.5rem] border border-border/60 bg-secondary/50 p-6 shadow-md backdrop-blur-sm">
+                <div className="rounded-xl border border-border/60 bg-secondary/50 p-6 shadow-md backdrop-blur-sm">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                     Prilagojena ponudba
                   </p>
@@ -450,7 +450,7 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-border/60 bg-[linear-gradient(180deg,rgba(15,23,42,0.8),rgba(15,23,42,0.62))] px-6 py-8 shadow-lg backdrop-blur-sm md:px-10 md:py-10">
+            <div className="rounded-2xl border border-border/60 bg-card/70 px-6 py-8 shadow-lg backdrop-blur-sm md:px-10 md:py-10">
               <div className="mx-auto max-w-3xl text-center">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Kontakt
