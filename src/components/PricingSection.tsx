@@ -113,18 +113,6 @@ const PricingSection = () => {
       id="cenik"
       className="relative overflow-hidden py-14 md:py-24"
     >
-      <div className="absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-background via-background/75 to-transparent" />
-      <div
-        className="absolute inset-0 z-0 opacity-10 mix-blend-luminosity"
-        style={{
-          backgroundImage: "url(/hero-car-BTyg7RAy.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "grayscale(1) contrast(1.05) brightness(0.42)",
-        }}
-      />
-      <div className="absolute inset-x-0 top-20 z-0 h-72 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.07),_transparent_68%)]" />
-      <div className="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-b from-transparent via-background/70 to-background" />
 
       <div className="relative z-10">
         <div className="container">
