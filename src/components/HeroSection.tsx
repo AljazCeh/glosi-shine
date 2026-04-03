@@ -2,8 +2,7 @@ import heroImg from "@/assets/hero-car.jpg";
 
 const HeroSection = () => {
   return (
-    <section id="domov" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+    <section id="domov" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       <img
         src={heroImg}
         alt="Profesionalno ročno pranje avtomobila"
@@ -13,13 +12,10 @@ const HeroSection = () => {
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-background/75" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-background/70 pointer-events-none transition-all duration-700" />
-      {/* Subtle bottom fade into next section */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background pointer-events-none" />
 
-      <div className="relative z-10 container text-center px-6 py-32 md:py-0">
+      <div className="relative z-10 container text-center px-6 py-28 md:py-0">
         <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6">
           Ivančna Gorica
         </p>

@@ -1,6 +1,6 @@
 const AboutSection = () => {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-16 md:py-20">
       <div className="container max-w-2xl text-center">
         <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-6">
           Natančno čiščenje vozil z osebnim pristopom

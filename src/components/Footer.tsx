@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="border-t border-border py-12 md:py-16">
+    <footer className="border-t border-border/60 bg-[hsl(220,10%,9%)] py-10 md:py-14">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           <div>
@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border text-center text-xs text-muted-foreground">
+        <div className="mt-8 pt-5 border-t border-border/40 text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} Avtopralnica Glosi. Vse pravice pridržane.
         </div>
       </div>
