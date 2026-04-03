@@ -121,9 +121,7 @@ export const services: ServiceDetail[] = [
           "Temeljito notranje čiščenje",
           "Temeljito zunanje čiščenje",
           "Sesanje in čiščenje notranjosti",
-          "Ročno zunanje pranje",
-          "Zaščitni vosek",
-          "Premaz za plastike in gume",
+          
         ],
         pricing: [
           { category: "small", price: 35 },
