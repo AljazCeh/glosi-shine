@@ -122,11 +122,10 @@ const PricingSection = () => {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ===== MAIN PRICING CARDS SECTION ===== */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-950 py-16 md:py-24 border-t border-slate-800">
-        <div className="container">
+      {/* ===== MAIN PRICING CARDS SECTION ===== (integrirano, manji spacing) */}
+      <div className="bg-gradient-to-b from-slate-900 to-slate-950 pb-16 md:pb-24 border-t border-slate-800">
+        <div className="container pt-8 md:pt-10">
           <div className="max-w-7xl mx-auto">
             {/* Main Services Grid - 4 cards, properly aligned */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 mb-20">
@@ -189,22 +188,17 @@ const PricingSection = () => {
 
                       {/* Features - Fixed height, scrollable if needed */}
                       {service.packages[0]?.includes && (
-                        <div className="mb-6 flex-grow">
+                        <div className="mb-6">
                           <p className="text-xs text-cyan-400 font-semibold uppercase tracking-wider mb-4">
                             Vključeno:
                           </p>
                           <ul className="space-y-2.5 text-sm">
-                            {service.packages[0].includes.slice(0, 5).map((item, idx) => (
+                            {service.packages[0].includes.map((item, idx) => (
                               <li key={idx} className="flex gap-2.5 items-start text-slate-300">
                                 <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" strokeWidth={3} />
                                 <span className="leading-snug">{item}</span>
                               </li>
                             ))}
-                            {service.packages[0].includes.length > 5 && (
-                              <li className="text-xs text-slate-400 italic mt-2">
-                                + {service.packages[0].includes.length - 5} več
-                              </li>
-                            )}
                           </ul>
                         </div>
                       )}
@@ -276,16 +270,6 @@ const PricingSection = () => {
                 <p className="text-sm text-slate-300 mb-5">
                   Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in vzmetnice.
                 </p>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-300">30 EUR / dan</span>
-                    <span className="text-cyan-400 font-semibold">Brežplačno</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-300">50 EUR / 2 dni</span>
-                    <span className="text-cyan-400 font-semibold">Brežplačno</span>
-                  </div>
-                </div>
                 <p className="text-xs text-slate-400 italic">V ceno je vključeno čistilo in krtača.</p>
               </div>
 
@@ -370,7 +354,7 @@ const PricingSection = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
