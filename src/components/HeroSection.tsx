@@ -30,7 +30,7 @@ const HeroSection = () => {
           Temeljito zunanje in notranje čiščenje vozil v Ivančni Gorici.
         </p>
         <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-          Poskrbimo, da je vaše vozilo čisto, urejeno in pripravljeno na vsakdan. Pri delu stavimo na natančnost, kakovost in osebni pristop.
+          Poskrbimo, da je vaše vozilo čisto, urejeno in pripravljeno na vsakdan. Pri delu stavimo na natančnost, kakovost in 9 letne izkušnje s področja avtokozmetike.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
