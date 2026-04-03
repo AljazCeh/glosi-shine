@@ -200,7 +200,7 @@ const PricingSection = () => {
                         }`}
                       >
                     
-                        <div className={`p-5 md:p-6 ${isFeatured ? "pt-14 md:pt-16" : ""}`}>
+                        <div className="p-5 md:p-6">
                           <div className="mb-4 flex items-center justify-between gap-3">
                             {IconComponent && (
                               <div
@@ -299,9 +299,8 @@ const PricingSection = () => {
                         : "border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01))] shadow-[0_24px_60px_-36px_rgba(0,0,0,0.95)] hover:border-white/15"
                     }`}
                   >
-                
 
-                    <div className={`p-6 md:p-7 ${pkg.featured ? "pt-14 md:pt-16" : ""}`}>
+                                    <div className="p-6 md:p-7">
                       <h4 className="text-2xl font-bold text-white">{pkg.name}</h4>
                       <p className="mt-3 text-sm leading-6 text-slate-300/90">{pkg.description}</p>
 
