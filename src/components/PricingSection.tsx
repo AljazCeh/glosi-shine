@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check, Phone, Mail, Droplets, Wind, Sparkles, CircleDot } from "lucide-react";
@@ -137,13 +136,12 @@ const PricingSection = () => {
                 const IconComponent = iconMap[service.icon];
 
                 return (
-                  <Link
+                  <div
                     key={service.slug}
-                    to={`/storitve/${service.slug}`}
-                    className={`group relative rounded-xl overflow-hidden transition-all hover:shadow-2xl flex flex-col h-full ${
+                    className={`group relative rounded-xl overflow-hidden transition-all flex flex-col h-full ${
                       isFeatured
                         ? "border-2 border-cyan-500 bg-gradient-to-br from-cyan-900/30 to-slate-900/80 shadow-xl shadow-cyan-500/20"
-                        : "border border-slate-700/60 bg-slate-800/40 hover:border-cyan-500/60"
+                        : "border border-slate-700/60 bg-slate-800/40"
                     }`}
                   >
                     {/* Featured Badge */}
@@ -211,14 +209,8 @@ const PricingSection = () => {
                         </div>
                       )}
 
-                      {/* CTA Button - Sticky to bottom */}
-                      <div className="pt-6 border-t border-slate-700/50 mt-auto">
-                        <span className="inline-flex items-center justify-center w-full px-4 py-3 bg-cyan-500 hover:bg-cyan-600 text-black font-bold text-sm rounded-lg transition-colors">
-                          Preglej podrobnosti
-                        </span>
-                      </div>
                     </div>
-                  </Link>
+                  </div>
                 );
               })}
             </div>
@@ -278,12 +270,6 @@ const PricingSection = () => {
                             Več informacij
                           </span>
                         </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* ===== RENTAL & HOME CLEANING ===== */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 pt-12 border-t border-slate-800">
