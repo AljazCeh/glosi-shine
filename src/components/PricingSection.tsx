@@ -63,209 +63,263 @@ const DEEP_CLEANING_PACKAGES = [
   },
 ];
 
+const BUSINESS_DESCRIPTION =
+  "Podjetjem in obrtnikom z večjim voznim parkom nudimo celovito skrb za čistočo vozil. Kontaktirajte nas in naredili bomo ponudbo, prilagojeno vašim željam in potrebam.";
+
 const PricingSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("small");
 
-  const mainServices = services.filter((s) =>
-    MAIN_SERVICES.some((title) => s.title.includes(title))
+  const mainServices = services.filter((service) =>
+    MAIN_SERVICES.some((title) => service.title.includes(title))
   );
+
+  const visibleMainServices = mainServices.filter((service) =>
+    service.packages.some((pkg) =>
+      pkg.pricing.some(
+        (tier) => tier.category === selectedCategory || tier.category === "all"
+      )
+    )
+  );
+
+  const selectedCategoryLabel =
+    vehicleCategories.find((category) => category.value === selectedCategory)?.label ?? "";
 
   const getPrice = (service: typeof services[number], category: string) => {
     if (!service.packages.length) return null;
 
     const pkg = service.packages[0];
     const priceObj = pkg.pricing.find(
-      (p) => p.category === category || p.category === "all"
+      (tier) => tier.category === category || tier.category === "all"
     );
 
     return priceObj?.price ?? null;
   };
 
+  const getMainCardPlacementClass = (serviceCount: number, index: number) => {
+    if (serviceCount === 3 && index === 0) {
+      return "xl:col-span-2 xl:col-start-2";
+    }
+
+    return "xl:col-span-2";
+  };
+
   return (
-    <section id="cenik" className="relative py-16 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 z-0" />
+    <section id="cenik" className="relative overflow-hidden py-16 md:py-28">
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
       <div
-        className="absolute inset-0 opacity-15 z-0"
+        className="absolute inset-0 z-0 opacity-15"
         style={{
           backgroundImage: "url(/hero-car-BTyg7RAy.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
+      <div className="absolute inset-x-0 top-24 z-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.14),_transparent_70%)]" />
 
-      <div className="container relative z-10">
-        <div className="text-center mb-10 md:mb-14">
-          <p className="text-cyan-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-3">
-            Transparentne cene • Kakovostne storitve
-          </p>
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">
-            CENIK
-          </h2>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-            Pregledne cene za vse storitve. Izberite velikost vozila in poglejte ponudbo.
-          </p>
-        </div>
-
-        <div className="flex justify-center mb-8 md:mb-10">
-          <div className="overflow-x-auto -mx-4 px-4 md:mx-0">
-            <div className="flex gap-2.5 justify-start md:justify-center min-w-min md:min-w-0">
-              {vehicleCategories.map((category) => (
-                <button
-                  key={category.value}
-                  onClick={() => setSelectedCategory(category.value)}
-                  className={`px-4 md:px-5 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap rounded-lg transition-all ${
-                    selectedCategory === category.value
-                      ? "bg-cyan-500 text-black shadow-lg shadow-cyan-500/50"
-                      : "bg-slate-800/60 text-slate-300 border border-slate-700/50 hover:bg-slate-700/80"
-                  }`}
-                >
-                  {category.label}
-                </button>
-              ))}
-            </div>
+      <div className="relative z-10">
+        <div className="container">
+          <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-cyan-400 sm:text-sm">
+              Transparentne cene • Kakovostne storitve
+            </p>
+            <h2 className="mb-4 text-5xl font-bold leading-tight text-white md:text-7xl">CENIK</h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-300 md:text-xl">
+              Pregledne cene za vse storitve. Izberite velikost vozila in poglejte ponudbo.
+            </p>
           </div>
-        </div>
-      </div>
 
-      <div className="relative z-10 bg-gradient-to-b from-slate-900 to-slate-950 pb-16 md:pb-24 border-t border-slate-800">
-        <div className="container pt-8 md:pt-10">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 mb-20">
-              {mainServices.map((service) => {
-                const price = getPrice(service, selectedCategory);
-                const isFeatured = service.title.includes("Kompletno");
-                const IconComponent = iconMap[service.icon];
-
-                return (
-                  <div
-                    key={service.slug}
-                    className={`group relative rounded-xl overflow-hidden transition-all flex flex-col h-full ${
-                      isFeatured
-                        ? "border-2 border-cyan-500 bg-gradient-to-br from-cyan-900/30 to-slate-900/80 shadow-xl shadow-cyan-500/20"
-                        : "border border-slate-700/60 bg-slate-800/40"
-                    }`}
-                  >
-                    {isFeatured && (
-                      <div className="absolute top-0 right-0 z-20">
-                        <Badge className="rounded-none rounded-bl-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-xs px-4 py-2">
-                          Največkrat izbrano
-                        </Badge>
-                      </div>
-                    )}
-
-                    <div
-                      className={`p-6 md:p-7 flex flex-col h-full ${
-                        isFeatured ? "pt-14 md:pt-16" : ""
+          <div className="mx-auto mb-10 max-w-6xl md:mb-12">
+            <div className="rounded-[1.75rem] border border-slate-700/60 bg-slate-900/70 p-2 shadow-2xl shadow-slate-950/30 backdrop-blur-sm">
+              <div className="overflow-x-auto -mx-2 px-2 md:mx-0 md:px-0">
+                <div className="flex min-w-max gap-2.5 md:min-w-0 md:flex-wrap md:justify-center">
+                  {vehicleCategories.map((category) => (
+                    <button
+                      key={category.value}
+                      type="button"
+                      aria-pressed={selectedCategory === category.value}
+                      onClick={() => setSelectedCategory(category.value)}
+                      className={`rounded-2xl border px-4 py-3 text-xs font-semibold whitespace-nowrap transition-all duration-300 sm:text-sm md:px-5 ${
+                        selectedCategory === category.value
+                          ? "border-cyan-300/70 bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/30"
+                          : "border-slate-700/60 bg-slate-950/40 text-slate-300 hover:border-cyan-400/40 hover:bg-slate-800/90 hover:text-white"
                       }`}
                     >
-                      {IconComponent && (
-                        <div className="mb-4">
-                          <IconComponent className="w-10 h-10 text-cyan-400" strokeWidth={1.5} />
-                        </div>
-                      )}
+                      {category.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
 
-                      <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors line-clamp-2">
-                        {service.title}
-                      </h3>
+          <div className="mx-auto max-w-7xl space-y-12 md:space-y-16">
+            <div className="rounded-[2rem] border border-slate-800/80 bg-slate-900/45 p-4 shadow-2xl shadow-slate-950/30 backdrop-blur-sm md:p-6">
+              <div className="mb-6 flex flex-col gap-4 px-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-400/85">
+                    Izbrane storitve
+                  </p>
+                  <h3 className="mt-2 text-2xl font-bold text-white md:text-3xl">Glavni paketi</h3>
+                </div>
+                <div className="rounded-full border border-slate-700/70 bg-slate-950/50 px-4 py-2 text-sm text-slate-300">
+                  {selectedCategoryLabel}
+                </div>
+              </div>
 
-                      {service.duration && (
-                        <p className="text-xs text-slate-400 mb-4">
-                          <span className="font-semibold text-slate-300">Trajanje:</span>{" "}
-                          {service.duration}
-                        </p>
-                      )}
+              <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-8 md:gap-7">
+                {visibleMainServices.map((service, index) => {
+                  const price = getPrice(service, selectedCategory);
+                  const isFeatured = service.title.includes("Kompletno");
+                  const IconComponent = iconMap[service.icon];
 
-                      <div className="mb-6">
-                        {price !== null && price !== 0 ? (
-                          <div className="flex items-baseline gap-1.5">
-                            <span
-                              className={`font-bold text-white ${
-                                isFeatured ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"
-                              }`}
-                            >
-                              {price}
-                            </span>
-                            <span className="text-xl md:text-2xl text-cyan-400">€</span>
+                  return (
+                    <div
+                      key={service.slug}
+                      className={getMainCardPlacementClass(visibleMainServices.length, index)}
+                    >
+                      <div
+                        className={`group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border transition-all duration-300 hover:-translate-y-1 ${
+                          isFeatured
+                            ? "border-cyan-400/70 bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 shadow-xl shadow-cyan-950/30"
+                            : "border-slate-700/70 bg-slate-900/80 shadow-xl shadow-slate-950/25 hover:border-cyan-400/40"
+                        }`}
+                      >
+                        {isFeatured && (
+                          <div className="absolute right-0 top-0 z-20">
+                            <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-xs font-bold text-white">
+                              Največkrat izbrano
+                            </Badge>
                           </div>
-                        ) : (
-                          <div className="text-base text-slate-400 italic">Po dogovoru</div>
                         )}
-                      </div>
 
-                      {service.packages[0]?.includes && (
-                        <div className="mb-6">
-                          <p className="text-xs text-cyan-400 font-semibold uppercase tracking-wider mb-4">
-                            Vključeno:
+                        <div
+                          className={`relative flex h-full flex-col p-6 md:p-7 ${
+                            isFeatured ? "pt-14 md:pt-16" : ""
+                          }`}
+                        >
+                          <div className="mb-5 flex items-start justify-between gap-3">
+                            {IconComponent && (
+                              <div
+                                className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${
+                                  isFeatured
+                                    ? "border-cyan-400/30 bg-cyan-400/10"
+                                    : "border-slate-700/70 bg-slate-950/55"
+                                }`}
+                              >
+                                <IconComponent className="h-6 w-6 text-cyan-300" strokeWidth={1.7} />
+                              </div>
+                            )}
+
+                            {service.duration && (
+                              <span className="rounded-full border border-slate-700/70 bg-slate-950/55 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-slate-300">
+                                {service.duration}
+                              </span>
+                            )}
+                          </div>
+
+                          <h3 className="mb-3 text-xl font-bold text-white transition-colors group-hover:text-cyan-200 md:text-2xl">
+                            {service.title}
+                          </h3>
+                          <p className="mb-6 text-sm leading-relaxed text-slate-300/90">
+                            {service.shortDesc}
                           </p>
-                          <ul className="space-y-2.5 text-sm">
-                            {service.packages[0].includes.map((item, idx) => (
-                              <li key={idx} className="flex gap-2.5 items-start text-slate-300">
-                                <Check
-                                  className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5"
-                                  strokeWidth={3}
-                                />
-                                <span className="leading-snug">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
+
+                          <div className="mb-6 border-b border-slate-800/80 pb-6">
+                            {price !== null ? (
+                              <div className="flex items-end gap-2">
+                                <span
+                                  className={`font-bold text-white ${
+                                    isFeatured ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"
+                                  }`}
+                                >
+                                  {price}
+                                </span>
+                                <span className="pb-1 text-xl font-semibold text-cyan-300 md:text-2xl">
+                                  €
+                                </span>
+                              </div>
+                            ) : (
+                              <div className="text-base italic text-slate-400">Po dogovoru</div>
+                            )}
+                          </div>
+
+                          {service.packages[0]?.includes && (
+                            <div className="mt-auto rounded-2xl border border-slate-800/80 bg-slate-950/45 p-4">
+                              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-400">
+                                Vključeno
+                              </p>
+                              <ul className="space-y-3 text-sm">
+                                {service.packages[0].includes.map((item, itemIndex) => (
+                                  <li
+                                    key={itemIndex}
+                                    className="flex items-start gap-2.5 text-slate-300"
+                                  >
+                                    <Check
+                                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400"
+                                      strokeWidth={3}
+                                    />
+                                    <span className="leading-snug">{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
                         </div>
-                      )}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
 
-            <div className="mb-20 pt-12 border-t border-slate-800">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
-                Globinsko čiščenje
-              </h3>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="border-t border-slate-800 pt-12">
+              <div className="mb-8 text-center">
+                <h3 className="text-2xl font-bold text-white md:text-3xl">Globinsko čiščenje</h3>
+                <p className="mx-auto mt-3 max-w-2xl text-slate-300">
+                  Poglobljena nega za vozila, ki potrebujejo več kot le klasično osvežitev.
+                </p>
+              </div>
+
+              <div className="grid auto-rows-fr grid-cols-1 gap-8 lg:grid-cols-2">
                 {DEEP_CLEANING_PACKAGES.map((pkg) => (
                   <div
                     key={pkg.name}
-                    className={`rounded-xl overflow-hidden transition-all flex flex-col h-full relative ${
+                    className={`relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border transition-all duration-300 hover:-translate-y-1 ${
                       pkg.featured
-                        ? "border-2 border-cyan-500 bg-gradient-to-br from-cyan-900/30 to-slate-900/80 shadow-xl shadow-cyan-500/20"
-                        : "border border-slate-700/60 bg-slate-800/40 hover:border-cyan-500/60"
+                        ? "border-cyan-400/70 bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 shadow-xl shadow-cyan-950/30"
+                        : "border-slate-700/70 bg-slate-900/80 shadow-xl shadow-slate-950/25 hover:border-cyan-400/40"
                     }`}
                   >
                     {pkg.featured && (
-                      <div className="absolute top-0 right-0 z-20">
-                        <Badge className="rounded-none rounded-bl-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-xs px-4 py-2">
+                      <div className="absolute right-0 top-0 z-20">
+                        <Badge className="rounded-none rounded-bl-2xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-xs font-bold text-white">
                           Priporočeno
                         </Badge>
                       </div>
                     )}
 
-                    <div
-                      className={`p-7 md:p-8 flex flex-col h-full ${
-                        pkg.featured ? "pt-16" : ""
-                      }`}
-                    >
-                      <h4 className="text-xl md:text-2xl font-bold text-white mb-2">
-                        {pkg.name}
-                      </h4>
-                      <p className="text-sm text-slate-400 mb-5">{pkg.description}</p>
+                    <div className={`flex h-full flex-col p-7 md:p-8 ${pkg.featured ? "pt-16" : ""}`}>
+                      <h4 className="text-xl font-bold text-white md:text-2xl">{pkg.name}</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-300/90">{pkg.description}</p>
 
-                      <div className="mb-6">
-                        <span className="text-3xl md:text-4xl font-bold text-cyan-400">
+                      <div className="my-6 border-b border-slate-800/80 pb-6">
+                        <span className="text-3xl font-bold text-cyan-300 md:text-4xl">
                           {pkg.price}
                         </span>
                       </div>
 
-                      <div className="flex-grow">
-                        <p className="text-xs text-cyan-400 font-semibold uppercase tracking-wider mb-4">
-                          Vključeno:
+                      <div className="mt-auto rounded-2xl border border-slate-800/80 bg-slate-950/45 p-4">
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-400">
+                          Vključeno
                         </p>
-                        <ul className="space-y-2.5">
-                          {pkg.includes.map((item, idx) => (
-                            <li key={idx} className="flex gap-2.5 items-start text-sm text-slate-300">
+                        <ul className="space-y-3">
+                          {pkg.includes.map((item, index) => (
+                            <li key={index} className="flex items-start gap-2.5 text-sm text-slate-300">
                               <Check
-                                className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5"
+                                className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400"
                                 strokeWidth={3}
                               />
-                              <span>{item}</span>
+                              <span className="leading-snug">{item}</span>
                             </li>
                           ))}
                         </ul>
@@ -276,100 +330,152 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 pt-12 border-t border-slate-800">
-              <div className="rounded-xl border border-slate-700/60 bg-slate-800/40 p-7 md:p-8 flex flex-col">
-                <h4 className="text-xl font-bold text-white mb-3">
-                  Izposoja globinskega sesalca
-                </h4>
-                <p className="text-sm text-slate-300 mb-5">
+            <div className="grid auto-rows-fr grid-cols-1 gap-8 border-t border-slate-800 pt-12 md:grid-cols-2">
+              <div className="flex h-full flex-col rounded-[1.75rem] border border-slate-700/70 bg-slate-900/80 p-7 shadow-xl shadow-slate-950/25 backdrop-blur-sm md:p-8">
+                <h4 className="text-xl font-bold text-white">Izposoja globinskega sesalca</h4>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
                   Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in
                   vzmetnice.
                 </p>
-                <p className="text-xs text-slate-400 italic">
-                  V ceno je vključeno čistilo in krtača.
-                </p>
+                <div className="mt-auto pt-6">
+                  <p className="rounded-2xl border border-slate-800/80 bg-slate-950/45 px-4 py-3 text-xs italic text-slate-400">
+                    V ceno je vključeno čistilo in krtača.
+                  </p>
+                </div>
               </div>
 
-              <div className="rounded-xl border border-slate-700/60 bg-slate-800/40 p-7 md:p-8 flex flex-col">
-                <h4 className="text-xl font-bold text-white mb-3">
-                  Čiščenje sedežnih garnitur na domu
-                </h4>
-                <p className="text-sm text-slate-300 mb-5">
+              <div className="flex h-full flex-col rounded-[1.75rem] border border-slate-700/70 bg-slate-900/80 p-7 shadow-xl shadow-slate-950/25 backdrop-blur-sm md:p-8">
+                <h4 className="text-xl font-bold text-white">Čiščenje sedežnih garnitur na domu</h4>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
                   Pridemo na vaš dom in s pomočjo pare očistimo sedežno garnituro, vzmetnico in
                   drugo oblazinjeno pohištvo.
                 </p>
-                <ul className="space-y-2.5 text-sm text-slate-300 flex-grow">
-                  <li className="flex gap-2.5 items-start">
-                    <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                <ul className="mt-6 space-y-3 text-sm text-slate-300">
+                  <li className="flex items-start gap-2.5">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400" strokeWidth={3} />
                     Odstranjevanje bakterij in pršic
                   </li>
-                  <li className="flex gap-2.5 items-start">
-                    <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-2.5">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400" strokeWidth={3} />
                     Čiščenje trdovratnih madeža
                   </li>
-                  <li className="flex gap-2.5 items-start">
-                    <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                  <li className="flex items-start gap-2.5">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-cyan-400" strokeWidth={3} />
                     Odstranjevanje neprijetnih vonjev
                   </li>
                 </ul>
-                <p className="text-base font-bold text-cyan-400 mt-6">Po dogovoru</p>
+                <p className="mt-auto pt-6 text-base font-bold text-cyan-300">Po dogovoru</p>
               </div>
             </div>
 
-            <div className="pt-12 border-t border-slate-800 mb-16">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
-                Dodatne storitve
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {ADDITIONAL_SERVICES.map((svc, idx) => (
+            <div className="border-t border-slate-800 pt-12">
+              <div className="relative overflow-hidden rounded-[2rem] border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/45 p-6 shadow-2xl shadow-cyan-950/20 md:p-10">
+                <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.16),_transparent_70%)] lg:block" />
+                <div className="relative grid gap-8 lg:grid-cols-[1.35fr_0.85fr] lg:items-center">
+                  <div>
+                    <Badge className="mb-4 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1.5 text-cyan-200">
+                      Za podjetja
+                    </Badge>
+                    <h3 className="text-2xl font-bold text-white md:text-3xl">Za podjetja</h3>
+                    <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
+                      {BUSINESS_DESCRIPTION}
+                    </p>
+                  </div>
+
+                  <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/45 p-6 backdrop-blur-sm md:p-7">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-400">
+                      Prilagojena ponudba
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                      Za redno vzdrževanje čistoče voznega parka pripravimo rešitev, ki se prilagodi
+                      vašemu obsegu dela in ritmu uporabe vozil.
+                    </p>
+
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                      <a href="#kontakt">
+                        <Button
+                          size="lg"
+                          className="w-full gap-2 bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25 hover:bg-cyan-300 sm:w-auto"
+                        >
+                          <Mail className="h-5 w-5" />
+                          Pošlji povpraševanje
+                        </Button>
+                      </a>
+                      <a href="tel:068172230">
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="w-full gap-2 border-cyan-400/50 bg-slate-950/30 text-cyan-100 hover:bg-cyan-500/10 hover:text-white sm:w-auto"
+                        >
+                          <Phone className="h-5 w-5" />
+                          Pokličite nas
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-slate-800 pt-12">
+              <div className="mb-8 text-center">
+                <h3 className="text-2xl font-bold text-white md:text-3xl">Dodatne storitve</h3>
+                <p className="mx-auto mt-3 max-w-2xl text-slate-300">
+                  Dopolnilne storitve za zaščito, osvežitev in dodatno nego vozila po meri.
+                </p>
+              </div>
+
+              <div className="grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {ADDITIONAL_SERVICES.map((service, index) => (
                   <div
-                    key={idx}
-                    className="rounded-lg border border-slate-700/50 bg-slate-800/30 p-5 hover:border-cyan-500/40 hover:bg-slate-800/50 transition-all"
+                    key={index}
+                    className="flex h-full flex-col justify-between rounded-[1.5rem] border border-slate-700/60 bg-slate-900/75 p-5 shadow-lg shadow-slate-950/20 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-slate-900"
                   >
-                    <p className="text-sm text-slate-300 font-medium mb-2">{svc.name}</p>
-                    <p className="text-2xl font-bold text-cyan-400">
-                      {svc.priceNote || `${svc.price}€`}
+                    <p className="mb-4 text-sm font-medium leading-relaxed text-slate-200">
+                      {service.name}
+                    </p>
+                    <p className="text-2xl font-bold text-cyan-300">
+                      {service.priceNote || `${service.price}€`}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-12 border-t border-slate-800 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Ste zainteresirani?
-              </h3>
-              <p className="text-slate-300 mb-8 max-w-xl mx-auto">
-                Izberite storitev ali nas kontaktirajte za poglobljeno svetovanje in osebno ponudbo.
-              </p>
+            <div className="border-t border-slate-800 pt-12">
+              <div className="rounded-[2rem] border border-slate-700/60 bg-slate-900/60 px-6 py-10 text-center shadow-2xl shadow-slate-950/25 backdrop-blur-sm md:px-10">
+                <h3 className="text-2xl font-bold text-white md:text-3xl">Ste zainteresirani?</h3>
+                <p className="mx-auto mt-4 max-w-2xl text-slate-300">
+                  Izberite storitev ali nas kontaktirajte za poglobljeno svetovanje in osebno ponudbo.
+                </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                <a href="tel:068172230">
-                  <Button
-                    size="lg"
-                    className="gap-2 bg-cyan-500 hover:bg-cyan-600 text-black font-bold shadow-lg shadow-cyan-500/30 w-full sm:w-auto"
-                  >
-                    <Phone className="w-5 h-5" />
-                    Pokličite nas
-                  </Button>
-                </a>
+                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                  <a href="tel:068172230">
+                    <Button
+                      size="lg"
+                      className="w-full gap-2 bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25 hover:bg-cyan-300 sm:w-auto"
+                    >
+                      <Phone className="h-5 w-5" />
+                      Pokličite nas
+                    </Button>
+                  </a>
+                  <a href="#kontakt">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="w-full gap-2 border-cyan-400/50 bg-slate-950/30 text-cyan-100 hover:bg-cyan-500/10 hover:text-white sm:w-auto"
+                    >
+                      <Mail className="h-5 w-5" />
+                      Pošlji povpraševanje
+                    </Button>
+                  </a>
+                </div>
 
-                <a href="#kontakt">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="gap-2 border-2 border-cyan-500/60 text-cyan-400 hover:bg-cyan-500/10 font-bold w-full sm:w-auto"
-                  >
-                    <Mail className="w-5 h-5" />
-                    Pošlji povpraševanje
-                  </Button>
-                </a>
+                <p className="mx-auto mt-8 max-w-2xl text-xs text-slate-400">
+                  Cene so informativne in se lahko razlikujejo glede na velikost, stanje vozila in
+                  specifične zahteve.
+                </p>
               </div>
-
-              <p className="text-xs text-slate-400">
-                Cene so informativne in se lahko razlikujejo glede na velikost, stanje vozila in
-                specifične zahteve.
-              </p>
             </div>
           </div>
         </div>
