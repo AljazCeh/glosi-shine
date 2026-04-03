@@ -208,7 +208,6 @@ const PricingSection = () => {
                           </ul>
                         </div>
                       )}
-
                     </div>
                   </div>
                 );
@@ -263,13 +262,11 @@ const PricingSection = () => {
                           ))}
                         </ul>
                       </div>
-
-                      <div className="pt-6 border-t border-slate-700/50 mt-6">
-                        <Link to="/storitve/globinsko-ciscenje">
-                          <span className="inline-flex items-center justify-center w-full px-4 py-3 bg-cyan-500 hover:bg-cyan-600 text-black font-bold text-sm rounded-lg transition-colors">
-                            Več informacij
-                          </span>
-                        </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* ===== RENTAL & HOME CLEANING ===== */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 pt-12 border-t border-slate-800">
