@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check, Phone, Mail, Droplets, Wind, Sparkles, CircleDot } from "lucide-react";
 import { services, vehicleCategories } from "@/data/services";
 
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, ComponentType<any>> = {
   Droplets,
   Wind,
   Sparkles,
   CircleDot,
 };
 
-// Primary main services for pricing section
-const MAIN_SERVICES = ["Zunanje čiščenje", "Temeljito notranje čiščenje", "Kompletno čiščenje", "Osnovno čiščenje"];
+const MAIN_SERVICES = [
+  "Zunanje čiščenje",
+  "Temeljito notranje čiščenje",
+  "Kompletno čiščenje",
+  "Osnovno čiščenje",
+];
 
-// Additional services data
 const ADDITIONAL_SERVICES = [
   { name: "Osnovno hitro čiščenje notranjosti", price: 10 },
   { name: "Spiranje vozila", price: 7 },
@@ -28,7 +31,6 @@ const ADDITIONAL_SERVICES = [
   { name: "Poliranje vozila", priceNote: "130–180€" },
 ];
 
-// Deep cleaning packages
 const DEEP_CLEANING_PACKAGES = [
   {
     name: "OSNOVNI PAKET",
@@ -64,69 +66,70 @@ const DEEP_CLEANING_PACKAGES = [
 const PricingSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("small");
 
-  // Get main services for pricing display
-  const mainServices = services.filter(s =>
-    MAIN_SERVICES.some(title => s.title.includes(title))
+  const mainServices = services.filter((s) =>
+    MAIN_SERVICES.some((title) => s.title.includes(title))
   );
 
-  // Get price for a service in selected category
-  const getPrice = (service: typeof services[0], category: string) => {
+  const getPrice = (service: typeof services[number], category: string) => {
     if (!service.packages.length) return null;
+
     const pkg = service.packages[0];
-    const priceObj = pkg.pricing.find(p => p.category === category || p.category === "all");
-    return (
-      <section id="cenik" className="relative py-16 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 z-0"></div>
-        <div
-          className="absolute inset-0 opacity-15 z-0"
-          style={{
-            backgroundImage: "url(/hero-car-BTyg7RAy.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></div>
+    const priceObj = pkg.pricing.find(
+      (p) => p.category === category || p.category === "all"
+    );
 
-        <div className="container relative z-10">
-          <div className="text-center mb-10 md:mb-14">
-            <p className="text-cyan-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-3">
-              Transparentne cene • Kakovostne storitve
-            </p>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">CENIK</h2>
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-              Pregledne cene za vse storitve. Izberite velikost vozila in poglejte ponudbo.
-            </p>
-          </div>
+    return priceObj?.price ?? null;
+  };
 
-          <div className="flex justify-center">
-            <div className="overflow-x-auto -mx-4 px-4 md:mx-0">
-              <div className="flex gap-2.5 justify-start md:justify-center min-w-min md:min-w-0">
-                {vehicleCategories.map((category) => (
-                  <button
-                    key={category.value}
-                    onClick={() => setSelectedCategory(category.value)}
-                    className={`px-4 md:px-5 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap rounded-lg transition-all ${
-                      selectedCategory === category.value
-                        ? "bg-cyan-500 text-black shadow-lg shadow-cyan-500/50"
-                        : "bg-slate-800/60 text-slate-300 border border-slate-700/50 hover:bg-slate-700/80"
-                    }`}
-                  >
-                    {category.label}
-                  </button>
-                ))}
-              </div>
+  return (
+    <section id="cenik" className="relative py-16 md:py-28 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 z-0" />
+      <div
+        className="absolute inset-0 opacity-15 z-0"
+        style={{
+          backgroundImage: "url(/hero-car-BTyg7RAy.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+
+      <div className="container relative z-10">
+        <div className="text-center mb-10 md:mb-14">
+          <p className="text-cyan-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-3">
+            Transparentne cene • Kakovostne storitve
+          </p>
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">
+            CENIK
+          </h2>
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+            Pregledne cene za vse storitve. Izberite velikost vozila in poglejte ponudbo.
+          </p>
+        </div>
+
+        <div className="flex justify-center mb-8 md:mb-10">
+          <div className="overflow-x-auto -mx-4 px-4 md:mx-0">
+            <div className="flex gap-2.5 justify-start md:justify-center min-w-min md:min-w-0">
+              {vehicleCategories.map((category) => (
+                <button
+                  key={category.value}
+                  onClick={() => setSelectedCategory(category.value)}
+                  className={`px-4 md:px-5 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap rounded-lg transition-all ${
+                    selectedCategory === category.value
+                      ? "bg-cyan-500 text-black shadow-lg shadow-cyan-500/50"
+                      : "bg-slate-800/60 text-slate-300 border border-slate-700/50 hover:bg-slate-700/80"
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="bg-gradient-to-b from-slate-900 to-slate-950 pb-16 md:pb-24 border-t border-slate-800">
-          <div className="container pt-8 md:pt-10">
-            <div className="max-w-7xl mx-auto">
-
-      {/* ===== MAIN PRICING CARDS SECTION ===== (integrirano, manji spacing) */}
-      <div className="bg-gradient-to-b from-slate-900 to-slate-950 pb-16 md:pb-24 border-t border-slate-800">
+      <div className="relative z-10 bg-gradient-to-b from-slate-900 to-slate-950 pb-16 md:pb-24 border-t border-slate-800">
         <div className="container pt-8 md:pt-10">
           <div className="max-w-7xl mx-auto">
-            {/* Main Services Grid - 4 cards, properly aligned */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 mb-20">
               {mainServices.map((service) => {
                 const price = getPrice(service, selectedCategory);
@@ -142,7 +145,6 @@ const PricingSection = () => {
                         : "border border-slate-700/60 bg-slate-800/40"
                     }`}
                   >
-                    {/* Featured Badge */}
                     {isFeatured && (
                       <div className="absolute top-0 right-0 z-20">
                         <Badge className="rounded-none rounded-bl-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-xs px-4 py-2">
@@ -151,31 +153,36 @@ const PricingSection = () => {
                       </div>
                     )}
 
-                    <div className={`p-6 md:p-7 flex flex-col h-full ${isFeatured ? "pt-14 md:pt-16" : ""}`}>
-                      {/* Icon */}
+                    <div
+                      className={`p-6 md:p-7 flex flex-col h-full ${
+                        isFeatured ? "pt-14 md:pt-16" : ""
+                      }`}
+                    >
                       {IconComponent && (
                         <div className="mb-4">
                           <IconComponent className="w-10 h-10 text-cyan-400" strokeWidth={1.5} />
                         </div>
                       )}
 
-                      {/* Title */}
                       <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors line-clamp-2">
                         {service.title}
                       </h3>
 
-                      {/* Duration */}
                       {service.duration && (
                         <p className="text-xs text-slate-400 mb-4">
-                          <span className="font-semibold text-slate-300">Trajanje:</span> {service.duration}
+                          <span className="font-semibold text-slate-300">Trajanje:</span>{" "}
+                          {service.duration}
                         </p>
                       )}
 
-                      {/* Price */}
                       <div className="mb-6">
-                        {price !== undefined && price !== 0 ? (
+                        {price !== null && price !== 0 ? (
                           <div className="flex items-baseline gap-1.5">
-                            <span className={`font-bold text-white ${isFeatured ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"}`}>
+                            <span
+                              className={`font-bold text-white ${
+                                isFeatured ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"
+                              }`}
+                            >
                               {price}
                             </span>
                             <span className="text-xl md:text-2xl text-cyan-400">€</span>
@@ -185,7 +192,6 @@ const PricingSection = () => {
                         )}
                       </div>
 
-                      {/* Features - Fixed height, scrollable if needed */}
                       {service.packages[0]?.includes && (
                         <div className="mb-6">
                           <p className="text-xs text-cyan-400 font-semibold uppercase tracking-wider mb-4">
@@ -194,7 +200,10 @@ const PricingSection = () => {
                           <ul className="space-y-2.5 text-sm">
                             {service.packages[0].includes.map((item, idx) => (
                               <li key={idx} className="flex gap-2.5 items-start text-slate-300">
-                                <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" strokeWidth={3} />
+                                <Check
+                                  className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5"
+                                  strokeWidth={3}
+                                />
                                 <span className="leading-snug">{item}</span>
                               </li>
                             ))}
@@ -207,7 +216,6 @@ const PricingSection = () => {
               })}
             </div>
 
-            {/* ===== DEEP CLEANING PACKAGES ===== */}
             <div className="mb-20 pt-12 border-t border-slate-800">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
                 Globinsko čiščenje
@@ -230,7 +238,11 @@ const PricingSection = () => {
                       </div>
                     )}
 
-                    <div className={`p-7 md:p-8 flex flex-col h-full ${pkg.featured ? "pt-16" : ""}`}>
+                    <div
+                      className={`p-7 md:p-8 flex flex-col h-full ${
+                        pkg.featured ? "pt-16" : ""
+                      }`}
+                    >
                       <h4 className="text-xl md:text-2xl font-bold text-white mb-2">
                         {pkg.name}
                       </h4>
@@ -249,7 +261,10 @@ const PricingSection = () => {
                         <ul className="space-y-2.5">
                           {pkg.includes.map((item, idx) => (
                             <li key={idx} className="flex gap-2.5 items-start text-sm text-slate-300">
-                              <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" strokeWidth={3} />
+                              <Check
+                                className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5"
+                                strokeWidth={3}
+                              />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -261,22 +276,27 @@ const PricingSection = () => {
               </div>
             </div>
 
-            {/* ===== RENTAL & HOME CLEANING ===== */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 pt-12 border-t border-slate-800">
-              {/* Deep Cleaner Rental */}
               <div className="rounded-xl border border-slate-700/60 bg-slate-800/40 p-7 md:p-8 flex flex-col">
-                <h4 className="text-xl font-bold text-white mb-3">Izposoja globinskega sesalca</h4>
+                <h4 className="text-xl font-bold text-white mb-3">
+                  Izposoja globinskega sesalca
+                </h4>
                 <p className="text-sm text-slate-300 mb-5">
-                  Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in vzmetnice.
+                  Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in
+                  vzmetnice.
                 </p>
-                <p className="text-xs text-slate-400 italic">V ceno je vključeno čistilo in krtača.</p>
+                <p className="text-xs text-slate-400 italic">
+                  V ceno je vključeno čistilo in krtača.
+                </p>
               </div>
 
-              {/* Home Upholstery Cleaning */}
               <div className="rounded-xl border border-slate-700/60 bg-slate-800/40 p-7 md:p-8 flex flex-col">
-                <h4 className="text-xl font-bold text-white mb-3">Čiščenje sedežnih garnitur na domu</h4>
+                <h4 className="text-xl font-bold text-white mb-3">
+                  Čiščenje sedežnih garnitur na domu
+                </h4>
                 <p className="text-sm text-slate-300 mb-5">
-                  Pridemo na vaš dom in s pomočjo pare očistimo sedežno garnituro, vzmetnico in drugo oblazinjeno pohištvo.
+                  Pridemo na vaš dom in s pomočjo pare očistimo sedežno garnituro, vzmetnico in
+                  drugo oblazinjeno pohištvo.
                 </p>
                 <ul className="space-y-2.5 text-sm text-slate-300 flex-grow">
                   <li className="flex gap-2.5 items-start">
@@ -296,7 +316,6 @@ const PricingSection = () => {
               </div>
             </div>
 
-            {/* ===== ADDITIONAL SERVICES ===== */}
             <div className="pt-12 border-t border-slate-800 mb-16">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
                 Dodatne storitve
@@ -316,7 +335,6 @@ const PricingSection = () => {
               </div>
             </div>
 
-            {/* ===== CTA FOOTER ===== */}
             <div className="pt-12 border-t border-slate-800 text-center">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Ste zainteresirani?
@@ -335,6 +353,7 @@ const PricingSection = () => {
                     Pokličite nas
                   </Button>
                 </a>
+
                 <a href="#kontakt">
                   <Button
                     variant="outline"
@@ -348,15 +367,15 @@ const PricingSection = () => {
               </div>
 
               <p className="text-xs text-slate-400">
-                Cene so informativne in se lahko razlikujejo glede na velikost, stanje vozila in specifične zahteve.
+                Cene so informativne in se lahko razlikujejo glede na velikost, stanje vozila in
+                specifične zahteve.
               </p>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
-}
+};
 
 export default PricingSection;
