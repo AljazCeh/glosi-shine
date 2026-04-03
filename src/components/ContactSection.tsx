@@ -10,9 +10,9 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="kontakt" className="py-24 md:py-32 bg-secondary/50">
+    <section id="kontakt" className="py-16 md:py-24">
       <div className="container">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
             Kontakt
           </h2>
@@ -21,9 +21,8 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact info */}
-          <div className="space-y-6">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="space-y-5">
             <div className="flex items-start gap-4">
               <Phone className="w-4 h-4 text-accent mt-1 shrink-0" strokeWidth={1.5} />
               <div>
@@ -65,22 +64,21 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact form */}
-          <div className="bg-card border border-border rounded-lg p-6 md:p-8">
+          <div className="bg-card/80 border border-border/60 rounded-lg p-6 md:p-8">
             {submitted ? (
               <div className="text-center py-8">
                 <p className="text-foreground font-medium mb-2">Hvala za vaše povpraševanje!</p>
                 <p className="text-muted-foreground text-sm">Odgovorili vam bomo v najkrajšem možnem času.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm text-muted-foreground mb-1.5">Ime in priimek</label>
                   <input
                     type="text"
                     id="name"
                     required
-                    className="w-full bg-secondary border border-border rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                    className="w-full bg-secondary/80 border border-border/60 rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
                   />
                 </div>
                 <div>
@@ -88,7 +86,7 @@ const ContactSection = () => {
                   <input
                     type="tel"
                     id="phone"
-                    className="w-full bg-secondary border border-border rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                    className="w-full bg-secondary/80 border border-border/60 rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
                   />
                 </div>
                 <div>
@@ -97,7 +95,7 @@ const ContactSection = () => {
                     type="email"
                     id="email"
                     required
-                    className="w-full bg-secondary border border-border rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                    className="w-full bg-secondary/80 border border-border/60 rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
                   />
                 </div>
                 <div>
@@ -106,7 +104,7 @@ const ContactSection = () => {
                     id="message"
                     rows={4}
                     required
-                    className="w-full bg-secondary border border-border rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring resize-none"
+                    className="w-full bg-secondary/80 border border-border/60 rounded-md px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring resize-none"
                   />
                 </div>
                 <button

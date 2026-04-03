@@ -22,12 +22,11 @@ const images = [
   { src: gallery10, alt: "Končni rezultat detailinga" },
 ];
 
-// Layout: row1=3, row2=2, row3=3, row4=2 for a balanced asymmetric feel
 const GallerySection = () => {
   return (
-    <section className="py-24 md:py-32 bg-secondary/50">
+    <section className="py-16 md:py-24">
       <div className="container">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
             Galerija
           </h2>
@@ -37,25 +36,21 @@ const GallerySection = () => {
         </div>
 
         <div className="max-w-6xl mx-auto space-y-4">
-          {/* Row 1: 3 images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {images.slice(0, 3).map((img, i) => (
               <GalleryImage key={i} {...img} />
             ))}
           </div>
-          {/* Row 2: 2 images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {images.slice(3, 5).map((img, i) => (
               <GalleryImage key={i} {...img} />
             ))}
           </div>
-          {/* Row 3: 3 images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {images.slice(5, 8).map((img, i) => (
               <GalleryImage key={i} {...img} />
             ))}
           </div>
-          {/* Row 4: 2 images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {images.slice(8, 10).map((img, i) => (
               <GalleryImage key={i} {...img} />
@@ -68,14 +63,14 @@ const GallerySection = () => {
 };
 
 const GalleryImage = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="overflow-hidden rounded-lg">
+  <div className="overflow-hidden rounded-lg border border-border/40">
     <img
       src={src}
       alt={alt}
       loading="lazy"
       width={960}
       height={720}
-      className="w-full h-56 md:h-72 object-cover hover:scale-[1.02] transition-transform duration-500"
+      className="w-full h-52 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-500"
     />
   </div>
 );
