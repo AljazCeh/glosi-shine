@@ -74,34 +74,29 @@ const PricingSection = () => {
     if (!service.packages.length) return null;
     const pkg = service.packages[0];
     const priceObj = pkg.pricing.find(p => p.category === category || p.category === "all");
-    return priceObj?.price;
-  };
-
-  return (
-    <>
-      {/* ===== HERO SECTION ===== */}
+    return (
       <section id="cenik" className="relative py-16 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 z-0"></div>
-        <div className="absolute inset-0 opacity-15 z-0" style={{
-          backgroundImage: 'url(/hero-car-BTyg7RAy.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}></div>
+        <div
+          className="absolute inset-0 opacity-15 z-0"
+          style={{
+            backgroundImage: "url(/hero-car-BTyg7RAy.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
 
         <div className="container relative z-10">
           <div className="text-center mb-10 md:mb-14">
             <p className="text-cyan-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-3">
               Transparentne cene • Kakovostne storitve
             </p>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">
-              CENIK
-            </h2>
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">CENIK</h2>
             <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
               Pregledne cene za vse storitve. Izberite velikost vozila in poglejte ponudbo.
             </p>
           </div>
 
-          {/* Vehicle Category Tabs */}
           <div className="flex justify-center">
             <div className="overflow-x-auto -mx-4 px-4 md:mx-0">
               <div className="flex gap-2.5 justify-start md:justify-center min-w-min md:min-w-0">
@@ -122,6 +117,10 @@ const PricingSection = () => {
             </div>
           </div>
         </div>
+
+        <div className="bg-gradient-to-b from-slate-900 to-slate-950 pb-16 md:pb-24 border-t border-slate-800">
+          <div className="container pt-8 md:pt-10">
+            <div className="max-w-7xl mx-auto">
 
       {/* ===== MAIN PRICING CARDS SECTION ===== (integrirano, manji spacing) */}
       <div className="bg-gradient-to-b from-slate-900 to-slate-950 pb-16 md:pb-24 border-t border-slate-800">
@@ -354,9 +353,10 @@ const PricingSection = () => {
             </div>
           </div>
         </div>
+
       </div>
-    </>
+    </section>
   );
-};
+}
 
 export default PricingSection;
