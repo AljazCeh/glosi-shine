@@ -69,7 +69,7 @@ const sectionShellClass =
   "relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-5 shadow-lg backdrop-blur-sm md:p-8";
 
 const subtlePanelClass =
-  "rounded-[1.35rem] border border-white/8 bg-black/20 shadow-[0_18px_40px_-32px_rgba(0,0,0,0.95)]";
+  "rounded-xl border border-border/50 bg-secondary/60";
 
 const PricingSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("small");
