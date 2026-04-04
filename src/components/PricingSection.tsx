@@ -111,7 +111,7 @@ const PricingSection = () => {
   return (
     <section
       id="cenik"
-      className="relative overflow-hidden py-14 md:py-24"
+      className="relative overflow-hidden py-10 md:py-24"
     >
 
       <div className="relative z-10">
