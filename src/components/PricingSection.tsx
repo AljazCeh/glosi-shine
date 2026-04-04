@@ -353,7 +353,7 @@ const PricingSection = () => {
                     Pridemo na vaš dom in s pomočjo pare očistimo sedežno garnituro, vzmetnico in
                     drugo oblazinjeno pohištvo.
                   </p>
-                  <ul className="mt-5 space-y-2.5 text-sm">
+                  <ul className="mt-4 md:mt-5 space-y-2 md:space-y-2.5 text-sm">
                     <li className="flex items-start gap-2.5 text-muted-foreground">
                       <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" strokeWidth={3} />
                       Odstranjevanje bakterij in pršic
