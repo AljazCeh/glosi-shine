@@ -172,7 +172,7 @@ const PricingSection = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 items-start gap-3.5 sm:grid-cols-2 xl:grid-cols-12 xl:gap-6">
+              <div className="grid grid-cols-2 items-start gap-3.5 xl:grid-cols-12 xl:gap-6">
                 {visibleMainServices.map((service) => {
                   const price = getPrice(service, selectedCategory);
                   const isFeatured = service.title.includes("Kompletno");
