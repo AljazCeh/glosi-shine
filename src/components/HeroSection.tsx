@@ -19,7 +19,7 @@ const HeroSection = () => {
         <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6">
           Ivančna Gorica
         </p>
-        <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight text-balance max-w-3xl mx-auto">
+        <h1 className="font-heading text-3xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight text-balance max-w-3xl mx-auto">
           Ročna avtopralnica Glosi
         </h1>
         <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed">
