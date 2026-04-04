@@ -482,7 +482,7 @@ const PricingSection = () => {
                   </a>
                 </div>
 
-                <p className="mx-auto mt-7 max-w-2xl text-xs leading-relaxed text-muted-foreground">
+                <p className="mx-auto mt-5 md:mt-7 max-w-2xl text-xs leading-relaxed text-muted-foreground">
                   Cene so informativne in se lahko razlikujejo glede na velikost, stanje vozila in
                   specifične zahteve.
                 </p>
