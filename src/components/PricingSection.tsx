@@ -394,7 +394,7 @@ const PricingSection = () => {
                     vašemu obsegu dela in ritmu uporabe vozil.
                   </p>
 
-                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <div className="mt-4 md:mt-6 flex flex-col gap-3 sm:flex-row">
                     <a href="#kontakt" className="sm:flex-1">
                       <Button
                         size="lg"
