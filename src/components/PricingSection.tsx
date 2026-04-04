@@ -329,8 +329,8 @@ const PricingSection = () => {
                 <h3 className="mt-1.5 md:mt-2 text-xl md:text-3xl font-bold text-foreground">Dodatna pomoč za dom in vozilo</h3>
               </div>
 
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className={`${subtlePanelClass} flex h-full flex-col p-6 md:p-7`}>
+              <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-2">
+                <div className={`${subtlePanelClass} flex h-full flex-col p-4 md:p-7`}>
                   <div className="inline-flex w-fit rounded-full border border-border/60 bg-secondary/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                     Samostojno čiščenje
                   </div>
