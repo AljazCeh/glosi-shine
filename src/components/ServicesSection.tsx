@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { services } from "@/data/services";
-import { Droplets, Wind, Sparkles, CircleDot, Lightbulb, Fan, Sofa } from "lucide-react";
+import { Droplets, Wind, Sparkles, CircleDot, Lightbulb, Fan, Sofa, type LucideIcon } from "lucide-react";
 
 const ServicesSection = () => {
   const rows = [services.slice(0, 2), services.slice(2, 5), services.slice(5, 7)];
 
-  const iconMap: Record<string, React.ComponentType<any>> = {
+  const iconMap: Record<string, LucideIcon> = {
     Droplets, Wind, Sparkles, CircleDot, Lightbulb, Fan, Sofa,
   };
 
@@ -28,8 +28,8 @@ const ServicesSection = () => {
               key={ri}
               className={`grid gap-3 md:gap-5 ${
                 row.length === 3
-                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:max-w-[66%] lg:mx-auto"
+                  ? "grid-cols-2 lg:grid-cols-3"
+                  : "grid-cols-2 lg:grid-cols-2 lg:max-w-[66%] lg:mx-auto"
               }`}
             >
               {row.map((service) => {
