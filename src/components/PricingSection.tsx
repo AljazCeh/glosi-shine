@@ -372,7 +372,7 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-5 shadow-lg md:p-9">
+            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-4 shadow-lg md:p-9">
               <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.08),_transparent_70%)] lg:block" />
               <div className="relative grid gap-6 lg:grid-cols-[1.25fr_0.85fr] lg:items-center">
                 <div className="max-w-2xl">
