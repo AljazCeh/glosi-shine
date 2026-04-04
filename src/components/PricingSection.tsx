@@ -299,11 +299,11 @@ const PricingSection = () => {
                         <p className="mt-1.5 md:mt-2 text-2xl md:text-4xl font-bold text-primary">{pkg.price}</p>
                       </div>
 
-                      <div className={`${subtlePanelClass} mt-5 p-4`}>
-                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
+                      <div className={`${subtlePanelClass} mt-4 md:mt-5 p-3 md:p-4`}>
+                        <p className="mb-2 md:mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                           Vključeno
                         </p>
-                        <ul className="space-y-2.5 text-sm">
+                        <ul className="space-y-2 md:space-y-2.5 text-xs md:text-sm">
                           {pkg.includes.map((item, index) => (
                             <li key={index} className="flex items-start gap-2.5 text-muted-foreground">
                               <Check
