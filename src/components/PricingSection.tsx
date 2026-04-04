@@ -344,7 +344,7 @@ const PricingSection = () => {
                   </div>
                 </div>
 
-                <div className={`${subtlePanelClass} flex h-full flex-col p-6 md:p-7`}>
+                <div className={`${subtlePanelClass} flex h-full flex-col p-4 md:p-7`}>
                   <div className="inline-flex w-fit rounded-full border border-border/60 bg-secondary/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground">
                     Na vašem naslovu
                   </div>
