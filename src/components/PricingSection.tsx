@@ -216,7 +216,7 @@ const PricingSection = () => {
                             {service.shortDesc}
                           </p>
 
-                          <div className={`${subtlePanelClass} mt-5 px-4 py-4`}>
+                          <div className={`${subtlePanelClass} mt-4 md:mt-5 px-3 py-3 md:px-4 md:py-4`}>
                             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                               Cena
                             </p>
