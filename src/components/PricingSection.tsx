@@ -157,7 +157,7 @@ const PricingSection = () => {
                   <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                     Izbrane storitve
                   </p>
-                  <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Glavni paketi</h3>
+                  <h3 className="mt-1.5 text-xl font-bold text-foreground md:mt-2 md:text-3xl">Glavni paketi</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
                     Najbolj iskane storitve za vsakodnevno urejenost, hitro osvežitev ali celovito
                     nego vozila.
