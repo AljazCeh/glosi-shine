@@ -22,7 +22,7 @@ const HeroSection = () => {
         <h1 className="font-heading text-3xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight text-balance max-w-3xl mx-auto">
           Ročna avtopralnica Glosi
         </h1>
-        <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed">
+        <p className="mt-4 md:mt-6 text-base md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed">
           Temeljito zunanje in notranje čiščenje vozil v Ivančni Gorici.
         </p>
         <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
