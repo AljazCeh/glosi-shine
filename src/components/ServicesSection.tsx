@@ -22,7 +22,7 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-5">
+        <div className="max-w-5xl mx-auto space-y-3 md:space-y-5">
           {rows.map((row, ri) => (
             <div
               key={ri}
