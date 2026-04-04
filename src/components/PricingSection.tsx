@@ -460,7 +460,7 @@ const PricingSection = () => {
                   Izberite storitev ali nas kontaktirajte za poglobljeno svetovanje in osebno ponudbo.
                 </p>
 
-                <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <div className="mt-5 md:mt-7 flex flex-col items-center justify-center gap-3 md:gap-4 sm:flex-row">
                   <a href="tel:068172230" className="sm:flex-1 sm:max-w-[240px]">
                     <Button
                       size="lg"
