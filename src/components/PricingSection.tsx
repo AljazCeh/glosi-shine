@@ -339,7 +339,7 @@ const PricingSection = () => {
                     Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in
                     vzmetnice.
                   </p>
-                  <div className="mt-5 rounded-lg border border-border/60 bg-secondary/60 px-4 py-3 text-sm text-muted-foreground">
+                  <div className="mt-4 md:mt-5 rounded-lg border border-border/60 bg-secondary/60 px-3 py-2.5 md:px-4 md:py-3 text-sm text-muted-foreground">
                     V ceno je vključeno čistilo in krtača.
                   </div>
                 </div>
