@@ -66,7 +66,7 @@ const BUSINESS_DESCRIPTION =
   "Podjetjem in obrtnikom z večjim voznim parkom nudimo celovito skrb za čistočo vozil. Kontaktirajte nas in naredili bomo ponudbo, prilagojeno vašim željam in potrebam.";
 
 const sectionShellClass =
-  "relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-5 shadow-lg backdrop-blur-sm md:p-8";
+  "relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-4 shadow-lg backdrop-blur-sm md:p-8";
 
 const subtlePanelClass =
   "rounded-xl border border-border/50 bg-secondary/60";
@@ -111,17 +111,17 @@ const PricingSection = () => {
   return (
     <section
       id="cenik"
-      className="relative overflow-hidden py-14 md:py-24"
+      className="relative overflow-hidden py-10 md:py-24"
     >
 
       <div className="relative z-10">
         <div className="container">
-          <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-primary sm:text-sm">
+          <div className="mx-auto mb-8 max-w-3xl text-center md:mb-14 px-1">
+            <p className="mb-2 md:mb-3 text-xs font-bold uppercase tracking-[0.3em] text-primary sm:text-sm">
               Transparentne cene • Kakovostne storitve
             </p>
-            <h2 className="mb-4 text-5xl font-bold leading-tight text-foreground md:text-7xl">CENIK</h2>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <h2 className="mb-3 md:mb-4 text-3xl font-bold leading-tight text-foreground md:text-5xl lg:text-7xl">CENIK</h2>
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-lg lg:text-xl">
               Pregledne cene za vse storitve. Izberite velikost vozila in poglejte ponudbo.
             </p>
           </div>
@@ -136,7 +136,7 @@ const PricingSection = () => {
                       type="button"
                       aria-pressed={selectedCategory === category.value}
                       onClick={() => setSelectedCategory(category.value)}
-                      className={`rounded-2xl border px-4 py-3 text-xs font-semibold whitespace-nowrap transition-all duration-300 sm:text-sm md:px-5 ${
+                      className={`rounded-2xl border px-3 py-2.5 md:px-4 md:py-3 text-xs font-semibold whitespace-nowrap transition-all duration-300 sm:text-sm md:px-5 ${
                         selectedCategory === category.value
                           ? "border-border bg-primary text-primary-foreground shadow-md"
                           : "border-border/50 bg-secondary/60 text-muted-foreground hover:border-border/80 hover:bg-secondary/60 hover:text-foreground"
@@ -150,14 +150,14 @@ const PricingSection = () => {
             </div>
           </div>
 
-          <div className="mx-auto max-w-7xl space-y-8 md:space-y-10">
+          <div className="mx-auto max-w-7xl space-y-5 md:space-y-10">
             <div className={sectionShellClass}>
-              <div className="mb-6 flex flex-col gap-4 md:mb-8 md:flex-row md:items-end md:justify-between">
+              <div className="mb-5 flex flex-col gap-3 md:mb-8 md:flex-row md:items-end md:justify-between md:gap-4">
                 <div className="max-w-2xl">
                   <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                     Izbrane storitve
                   </p>
-                  <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Glavni paketi</h3>
+                  <h3 className="mt-1.5 text-xl font-bold text-foreground md:mt-2 md:text-3xl">Glavni paketi</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
                     Najbolj iskane storitve za vsakodnevno urejenost, hitro osvežitev ali celovito
                     nego vozila.
@@ -188,7 +188,7 @@ const PricingSection = () => {
                         }`}
                       >
                     
-                        <div className="p-5 md:p-6">
+                        <div className="p-4 md:p-6">
                           <div className="mb-4 flex items-center justify-between gap-3">
                             {IconComponent && (
                               <div
@@ -198,7 +198,7 @@ const PricingSection = () => {
                                     : "border-border/50 bg-secondary/80"
                                 }`}
                               >
-                                <IconComponent className="h-5 w-5 text-primary" strokeWidth={1.8} />
+                                <IconComponent className="h-4 w-4 md:h-5 md:w-5 text-primary" strokeWidth={1.8} />
                               </div>
                             )}
 
@@ -209,14 +209,14 @@ const PricingSection = () => {
                             )}
                           </div>
 
-                          <h3 className="text-2xl font-bold leading-tight text-foreground transition-colors group-hover:text-primary">
+                          <h3 className="text-lg md:text-2xl font-bold leading-tight text-foreground transition-colors group-hover:text-primary">
                             {service.title}
                           </h3>
                           <p className="mt-3 text-sm leading-6 text-muted-foreground">
                             {service.shortDesc}
                           </p>
 
-                          <div className={`${subtlePanelClass} mt-5 px-4 py-4`}>
+                          <div className={`${subtlePanelClass} mt-4 md:mt-5 px-3 py-3 md:px-4 md:py-4`}>
                             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                               Cena
                             </p>
@@ -266,18 +266,18 @@ const PricingSection = () => {
             </div>
 
             <div className={sectionShellClass}>
-              <div className="mb-6 text-center md:mb-8">
+              <div className="mb-5 text-center md:mb-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Poglobljena nega
                 </p>
-                <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Globinsko čiščenje</h3>
+                <h3 className="mt-1.5 md:mt-2 text-xl md:text-3xl font-bold text-foreground">Globinsko čiščenje</h3>
                 <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
                   Ko vozilo potrebuje več kot le osvežitev, izberite paket z izrazitejšo globino
                   čiščenja in detajlno obdelavo notranjosti.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2">
                 {DEEP_CLEANING_PACKAGES.map((pkg) => (
                   <article
                     key={pkg.name}
@@ -288,22 +288,22 @@ const PricingSection = () => {
                     }`}
                   >
 
-                                    <div className="p-6 md:p-7">
-                      <h4 className="text-2xl font-bold text-foreground">{pkg.name}</h4>
-                      <p className="mt-3 text-sm leading-6 text-muted-foreground">{pkg.description}</p>
+                                    <div className="p-4 md:p-7">
+                      <h4 className="text-lg md:text-2xl font-bold text-foreground">{pkg.name}</h4>
+                      <p className="mt-2 md:mt-3 text-sm leading-6 text-muted-foreground">{pkg.description}</p>
 
-                      <div className={`${subtlePanelClass} mt-5 px-4 py-4`}>
+                      <div className={`${subtlePanelClass} mt-4 md:mt-5 px-3 py-3 md:px-4 md:py-4`}>
                         <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                           Paket
                         </p>
-                        <p className="mt-2 text-3xl font-bold text-primary md:text-4xl">{pkg.price}</p>
+                        <p className="mt-1.5 md:mt-2 text-2xl md:text-4xl font-bold text-primary">{pkg.price}</p>
                       </div>
 
-                      <div className={`${subtlePanelClass} mt-5 p-4`}>
-                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
+                      <div className={`${subtlePanelClass} mt-4 md:mt-5 p-3 md:p-4`}>
+                        <p className="mb-2 md:mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                           Vključeno
                         </p>
-                        <ul className="space-y-2.5 text-sm">
+                        <ul className="space-y-2 md:space-y-2.5 text-xs md:text-sm">
                           {pkg.includes.map((item, index) => (
                             <li key={index} className="flex items-start gap-2.5 text-muted-foreground">
                               <Check
@@ -322,38 +322,38 @@ const PricingSection = () => {
             </div>
 
             <div className={sectionShellClass}>
-              <div className="mb-6 text-center md:mb-8">
+              <div className="mb-5 text-center md:mb-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Fleksibilne možnosti
                 </p>
-                <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Dodatna pomoč za dom in vozilo</h3>
+                <h3 className="mt-1.5 md:mt-2 text-xl md:text-3xl font-bold text-foreground">Dodatna pomoč za dom in vozilo</h3>
               </div>
 
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className={`${subtlePanelClass} flex h-full flex-col p-6 md:p-7`}>
+              <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-2">
+                <div className={`${subtlePanelClass} flex h-full flex-col p-4 md:p-7`}>
                   <div className="inline-flex w-fit rounded-full border border-border/60 bg-secondary/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                     Samostojno čiščenje
                   </div>
-                  <h4 className="mt-4 text-2xl font-bold text-foreground">Izposoja globinskega sesalca</h4>
+                  <h4 className="mt-3 text-lg md:text-2xl font-bold text-foreground">Izposoja globinskega sesalca</h4>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in
                     vzmetnice.
                   </p>
-                  <div className="mt-5 rounded-lg border border-border/60 bg-secondary/60 px-4 py-3 text-sm text-muted-foreground">
+                  <div className="mt-4 md:mt-5 rounded-lg border border-border/60 bg-secondary/60 px-3 py-2.5 md:px-4 md:py-3 text-sm text-muted-foreground">
                     V ceno je vključeno čistilo in krtača.
                   </div>
                 </div>
 
-                <div className={`${subtlePanelClass} flex h-full flex-col p-6 md:p-7`}>
+                <div className={`${subtlePanelClass} flex h-full flex-col p-4 md:p-7`}>
                   <div className="inline-flex w-fit rounded-full border border-border/60 bg-secondary/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground">
                     Na vašem naslovu
                   </div>
-                  <h4 className="mt-4 text-2xl font-bold text-foreground">Čiščenje sedežnih garnitur na domu</h4>
+                  <h4 className="mt-3 text-lg md:text-2xl font-bold text-foreground">Čiščenje sedežnih garnitur na domu</h4>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     Pridemo na vaš dom in s pomočjo pare očistimo sedežno garnituro, vzmetnico in
                     drugo oblazinjeno pohištvo.
                   </p>
-                  <ul className="mt-5 space-y-2.5 text-sm">
+                  <ul className="mt-4 md:mt-5 space-y-2 md:space-y-2.5 text-sm">
                     <li className="flex items-start gap-2.5 text-muted-foreground">
                       <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" strokeWidth={3} />
                       Odstranjevanje bakterij in pršic
@@ -372,20 +372,20 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-6 shadow-lg md:p-9">
+            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-4 shadow-lg md:p-9">
               <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.08),_transparent_70%)] lg:block" />
               <div className="relative grid gap-6 lg:grid-cols-[1.25fr_0.85fr] lg:items-center">
                 <div className="max-w-2xl">
                   <Badge className="mb-4 rounded-full border border-border/60 bg-secondary/60 px-4 py-1.5 text-foreground">
                     Za podjetja
                   </Badge>
-                  <h3 className="text-2xl font-bold text-foreground md:text-3xl">Za podjetja</h3>
+                  <h3 className="text-xl font-bold text-foreground md:text-3xl">Za podjetja</h3>
                   <p className="mt-4 text-base leading-relaxed text-foreground/90 md:text-lg">
                     {BUSINESS_DESCRIPTION}
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-border/60 bg-secondary/50 p-6 shadow-md backdrop-blur-sm">
+                <div className="rounded-xl border border-border/60 bg-secondary/50 p-4 md:p-6 shadow-md backdrop-blur-sm">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                     Prilagojena ponudba
                   </p>
@@ -394,7 +394,7 @@ const PricingSection = () => {
                     vašemu obsegu dela in ritmu uporabe vozil.
                   </p>
 
-                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <div className="mt-4 md:mt-6 flex flex-col gap-3 sm:flex-row">
                     <a href="#kontakt" className="sm:flex-1">
                       <Button
                         size="lg"
@@ -441,7 +441,7 @@ const PricingSection = () => {
                       <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                         Cena
                       </span>
-                      <p className="text-2xl font-bold text-primary">
+                      <p className="text-xl md:text-2xl font-bold text-primary">
                         {service.priceNote || `${service.price}€`}
                       </p>
                     </div>
@@ -450,17 +450,17 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/60 bg-card/70 px-6 py-8 shadow-lg backdrop-blur-sm md:px-10 md:py-10">
+            <div className="rounded-2xl border border-border/60 bg-card/70 px-4 py-5 shadow-lg backdrop-blur-sm md:px-10 md:py-10">
               <div className="mx-auto max-w-3xl text-center">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Kontakt
                 </p>
-                <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Ste zainteresirani?</h3>
+                <h3 className="mt-1.5 text-xl font-bold text-foreground md:mt-2 md:text-3xl">Ste zainteresirani?</h3>
                 <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
                   Izberite storitev ali nas kontaktirajte za poglobljeno svetovanje in osebno ponudbo.
                 </p>
 
-                <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <div className="mt-5 md:mt-7 flex flex-col items-center justify-center gap-3 md:gap-4 sm:flex-row">
                   <a href="tel:068172230" className="sm:flex-1 sm:max-w-[240px]">
                     <Button
                       size="lg"
@@ -482,7 +482,7 @@ const PricingSection = () => {
                   </a>
                 </div>
 
-                <p className="mx-auto mt-7 max-w-2xl text-xs leading-relaxed text-muted-foreground">
+                <p className="mx-auto mt-5 md:mt-7 max-w-2xl text-xs leading-relaxed text-muted-foreground">
                   Cene so informativne in se lahko razlikujejo glede na velikost, stanje vozila in
                   specifične zahteve.
                 </p>
