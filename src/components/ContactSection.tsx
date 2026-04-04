@@ -21,7 +21,7 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           <div className="space-y-5">
             <div className="flex items-start gap-4">
               <Phone className="w-4 h-4 text-accent mt-1 shrink-0" strokeWidth={1.5} />
