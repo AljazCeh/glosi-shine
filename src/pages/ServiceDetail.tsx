@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { services, additionalServices } from "@/data/services";
 import { ChevronLeft, Mail, Phone } from "lucide-react";
 
+const SITE_URL = "https://glosi-mu.vercel.app";
+
 const ServiceDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -38,7 +40,15 @@ const ServiceDetailPage = () => {
         canonical.setAttribute("rel", "canonical");
         document.head.appendChild(canonical);
       }
-      canonical.setAttribute("href", `${window.location.origin}/storitve/${slug}`);
+      canonical.setAttribute("href", `${SITE_URL}/storitve/${slug}`);
+
+      let ogUrl = document.querySelector('meta[property="og:url"]');
+      if (!ogUrl) {
+        ogUrl = document.createElement("meta");
+        ogUrl.setAttribute("property", "og:url");
+        document.head.appendChild(ogUrl);
+      }
+      ogUrl.setAttribute("content", `${SITE_URL}/storitve/${slug}`);
     }
   }, [service, slug]);
 
@@ -126,9 +136,7 @@ const ServiceDetailPage = () => {
           <div className="container relative z-10">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12 md:mb-16">
-                <p className="text-cyan-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-3">
-                  Pravno da bomo presegil vata pričakovanja
-                </p>
+                
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
                   Cenik
                 </h2>
@@ -163,13 +171,6 @@ const ServiceDetailPage = () => {
                       </span>
                     </div>
                   ))}
-                </div>
-
-                <div className="mt-8 p-5 bg-slate-800/30 border border-slate-700/60 rounded-lg">
-                  <p className="text-xs md:text-sm text-slate-400 italic leading-relaxed">
-                    Cene veljajo za obratovanje na našem mestu. Pri prevzemu vozila na domu primenjujemo dodatni prevozni stroški.
-                    Za posebne okolišči nam prosim pokličejo ali pošljete povpraševanje. Prinaša se tudi ročin nasproti DGV.
-                  </p>
                 </div>
               </div>
             </div>
