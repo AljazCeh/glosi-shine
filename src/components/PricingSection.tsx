@@ -266,11 +266,11 @@ const PricingSection = () => {
             </div>
 
             <div className={sectionShellClass}>
-              <div className="mb-6 text-center md:mb-8">
+              <div className="mb-5 text-center md:mb-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Poglobljena nega
                 </p>
-                <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Globinsko čiščenje</h3>
+                <h3 className="mt-1.5 md:mt-2 text-xl md:text-3xl font-bold text-foreground">Globinsko čiščenje</h3>
                 <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
                   Ko vozilo potrebuje več kot le osvežitev, izberite paket z izrazitejšo globino
                   čiščenja in detajlno obdelavo notranjosti.
