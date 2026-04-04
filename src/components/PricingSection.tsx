@@ -450,7 +450,7 @@ const PricingSection = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/60 bg-card/70 px-5 py-6 shadow-lg backdrop-blur-sm md:px-10 md:py-10">
+            <div className="rounded-2xl border border-border/60 bg-card/70 px-4 py-5 shadow-lg backdrop-blur-sm md:px-10 md:py-10">
               <div className="mx-auto max-w-3xl text-center">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Kontakt
