@@ -2,7 +2,7 @@ import heroImg from "@/assets/hero-car.jpg";
 
 const HeroSection = () => {
   return (
-    <section id="domov" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section id="domov" className="relative min-h-[75vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
       <img
         src={heroImg}
         alt="Profesionalno ročno pranje avtomobila"
