@@ -32,13 +32,13 @@ const comparisons = [
 
 const BeforeAfterSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-[hsl(220,8%,12%)]">
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+    <section className="py-10 md:py-24 bg-[hsl(220,8%,12%)]">
+      <div className="container px-5 md:px-8">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="font-heading text-2xl md:text-4xl font-semibold text-foreground mb-3 md:mb-4">
             Before / After
           </h2>
-          <p className="text-muted-foreground max-w-md mx-auto">
+          <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto">
             Primeri rezultatov našega dela.
           </p>
         </div>

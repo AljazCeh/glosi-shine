@@ -24,34 +24,34 @@ const images = [
 
 const GallerySection = () => {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+    <section className="py-10 md:py-24">
+      <div className="container px-5 md:px-8">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="font-heading text-2xl md:text-4xl font-semibold text-foreground mb-3 md:mb-4">
             Galerija
           </h2>
-          <p className="text-muted-foreground max-w-md mx-auto">
+          <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto">
             Nekaj utrinkov našega dela in rezultatov čiščenja.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="max-w-6xl mx-auto space-y-2.5 md:space-y-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-4">
             {images.slice(0, 3).map((img, i) => (
               <GalleryImage key={i} {...img} />
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2.5 md:gap-4">
             {images.slice(3, 5).map((img, i) => (
               <GalleryImage key={i} {...img} />
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-4">
             {images.slice(5, 8).map((img, i) => (
               <GalleryImage key={i} {...img} />
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2.5 md:gap-4">
             {images.slice(8, 10).map((img, i) => (
               <GalleryImage key={i} {...img} />
             ))}
@@ -70,7 +70,7 @@ const GalleryImage = ({ src, alt }: { src: string; alt: string }) => (
       loading="lazy"
       width={960}
       height={720}
-      className="w-full h-36 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-500"
+      className="w-full h-32 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-500"
     />
   </div>
 );

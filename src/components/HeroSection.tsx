@@ -15,8 +15,8 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-background/70" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background pointer-events-none" />
 
-      <div className="relative z-10 container text-center px-6 py-28 md:py-0">
-        <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6">
+      <div className="relative z-10 container text-center px-5 py-16 md:py-0">
+        <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4 md:mb-6">
           Ivančna Gorica
         </p>
         <h1 className="font-heading text-3xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight text-balance max-w-3xl mx-auto">
@@ -29,10 +29,10 @@ const HeroSection = () => {
           Poskrbimo, da je vaše vozilo čisto, urejeno in pripravljeno na vsakdan. Pri delu stavimo na natančnost, kakovost in 9 letne izkušnje s področja avtokozmetike.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-7 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
           <a
             href="tel:068172230"
-            className="inline-flex items-center justify-center px-7 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors min-w-[200px]"
+            className="inline-flex items-center justify-center px-6 py-2.5 md:px-7 md:py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors min-w-[180px] md:min-w-[200px]"
           >
             Pokličite nas
           </a>
