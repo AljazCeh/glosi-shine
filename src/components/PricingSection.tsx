@@ -116,12 +116,12 @@ const PricingSection = () => {
 
       <div className="relative z-10">
         <div className="container">
-          <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-primary sm:text-sm">
+          <div className="mx-auto mb-8 max-w-3xl text-center md:mb-14 px-1">
+            <p className="mb-2 md:mb-3 text-xs font-bold uppercase tracking-[0.3em] text-primary sm:text-sm">
               Transparentne cene • Kakovostne storitve
             </p>
-            <h2 className="mb-4 text-5xl font-bold leading-tight text-foreground md:text-7xl">CENIK</h2>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <h2 className="mb-3 md:mb-4 text-3xl font-bold leading-tight text-foreground md:text-5xl lg:text-7xl">CENIK</h2>
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-lg lg:text-xl">
               Pregledne cene za vse storitve. Izberite velikost vozila in poglejte ponudbo.
             </p>
           </div>
