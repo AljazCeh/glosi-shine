@@ -66,7 +66,7 @@ const BUSINESS_DESCRIPTION =
   "Podjetjem in obrtnikom z večjim voznim parkom nudimo celovito skrb za čistočo vozil. Kontaktirajte nas in naredili bomo ponudbo, prilagojeno vašim željam in potrebam.";
 
 const sectionShellClass =
-  "relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-5 shadow-lg backdrop-blur-sm md:p-8";
+  "relative overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-4 shadow-lg backdrop-blur-sm md:p-8";
 
 const subtlePanelClass =
   "rounded-xl border border-border/50 bg-secondary/60";
