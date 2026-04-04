@@ -322,11 +322,11 @@ const PricingSection = () => {
             </div>
 
             <div className={sectionShellClass}>
-              <div className="mb-6 text-center md:mb-8">
+              <div className="mb-5 text-center md:mb-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Fleksibilne možnosti
                 </p>
-                <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Dodatna pomoč za dom in vozilo</h3>
+                <h3 className="mt-1.5 md:mt-2 text-xl md:text-3xl font-bold text-foreground">Dodatna pomoč za dom in vozilo</h3>
               </div>
 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
