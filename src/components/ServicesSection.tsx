@@ -38,7 +38,7 @@ const ServicesSection = () => {
                   <Link
                     key={service.slug}
                     to={`/storitve/${service.slug}`}
-                    className="group bg-card/80 rounded-lg p-6 border border-border/60 hover:border-primary/40 hover:bg-card transition-all duration-300 flex flex-col cursor-pointer"
+                    className="group bg-card/80 rounded-lg p-4 md:p-6 border border-border/60 hover:border-primary/40 hover:bg-card transition-all duration-300 flex flex-col cursor-pointer"
                   >
                     {IconComponent && (
                       <IconComponent className="w-5 h-5 text-accent mb-4" strokeWidth={1.5} />
