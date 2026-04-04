@@ -288,9 +288,9 @@ const PricingSection = () => {
                     }`}
                   >
 
-                                    <div className="p-6 md:p-7">
-                      <h4 className="text-2xl font-bold text-foreground">{pkg.name}</h4>
-                      <p className="mt-3 text-sm leading-6 text-muted-foreground">{pkg.description}</p>
+                                    <div className="p-4 md:p-7">
+                      <h4 className="text-lg md:text-2xl font-bold text-foreground">{pkg.name}</h4>
+                      <p className="mt-2 md:mt-3 text-sm leading-6 text-muted-foreground">{pkg.description}</p>
 
                       <div className={`${subtlePanelClass} mt-5 px-4 py-4`}>
                         <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
