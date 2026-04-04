@@ -152,7 +152,7 @@ const PricingSection = () => {
 
           <div className="mx-auto max-w-7xl space-y-5 md:space-y-10">
             <div className={sectionShellClass}>
-              <div className="mb-6 flex flex-col gap-4 md:mb-8 md:flex-row md:items-end md:justify-between">
+              <div className="mb-5 flex flex-col gap-3 md:mb-8 md:flex-row md:items-end md:justify-between md:gap-4">
                 <div className="max-w-2xl">
                   <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                     Izbrane storitve
