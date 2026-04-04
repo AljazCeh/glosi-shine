@@ -455,7 +455,7 @@ const PricingSection = () => {
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary/90">
                   Kontakt
                 </p>
-                <h3 className="mt-2 text-2xl font-bold text-foreground md:text-3xl">Ste zainteresirani?</h3>
+                <h3 className="mt-1.5 text-xl font-bold text-foreground md:mt-2 md:text-3xl">Ste zainteresirani?</h3>
                 <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
                   Izberite storitev ali nas kontaktirajte za poglobljeno svetovanje in osebno ponudbo.
                 </p>
