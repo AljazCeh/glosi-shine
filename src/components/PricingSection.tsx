@@ -334,7 +334,7 @@ const PricingSection = () => {
                   <div className="inline-flex w-fit rounded-full border border-border/60 bg-secondary/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                     Samostojno čiščenje
                   </div>
-                  <h4 className="mt-4 text-2xl font-bold text-foreground">Izposoja globinskega sesalca</h4>
+                  <h4 className="mt-3 text-lg md:text-2xl font-bold text-foreground">Izposoja globinskega sesalca</h4>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     Sami si lahko očistite domače pohištvo, avtomobilske sedeže, preproge in
                     vzmetnice.
