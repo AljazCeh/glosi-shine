@@ -441,7 +441,7 @@ const PricingSection = () => {
                       <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                         Cena
                       </span>
-                      <p className="text-2xl font-bold text-primary">
+                      <p className="text-xl md:text-2xl font-bold text-primary">
                         {service.priceNote || `${service.price}€`}
                       </p>
                     </div>
