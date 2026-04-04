@@ -379,7 +379,7 @@ const PricingSection = () => {
                   <Badge className="mb-4 rounded-full border border-border/60 bg-secondary/60 px-4 py-1.5 text-foreground">
                     Za podjetja
                   </Badge>
-                  <h3 className="text-2xl font-bold text-foreground md:text-3xl">Za podjetja</h3>
+                  <h3 className="text-xl font-bold text-foreground md:text-3xl">Za podjetja</h3>
                   <p className="mt-4 text-base leading-relaxed text-foreground/90 md:text-lg">
                     {BUSINESS_DESCRIPTION}
                   </p>

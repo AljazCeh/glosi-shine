@@ -43,7 +43,7 @@ const ServicesSection = () => {
                     {IconComponent && (
                       <IconComponent className="w-4 h-4 md:w-5 md:h-5 text-accent mb-3 md:mb-4" strokeWidth={1.5} />
                     )}
-                    <h3 className="font-heading text-lg font-medium text-foreground mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="font-heading text-base md:text-lg font-medium text-foreground mb-1.5 md:mb-2 group-hover:text-primary transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed flex-grow">

@@ -70,7 +70,7 @@ const GalleryImage = ({ src, alt }: { src: string; alt: string }) => (
       loading="lazy"
       width={960}
       height={720}
-      className="w-full h-52 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-500"
+      className="w-full h-36 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-500"
     />
   </div>
 );

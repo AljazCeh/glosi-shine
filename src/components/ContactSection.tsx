@@ -64,7 +64,7 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <div className="bg-card/80 border border-border/60 rounded-lg p-6 md:p-8">
+          <div className="bg-card/80 border border-border/60 rounded-lg p-5 md:p-8">
             {submitted ? (
               <div className="text-center py-8">
                 <p className="text-foreground font-medium mb-2">Hvala za vaše povpraševanje!</p>
