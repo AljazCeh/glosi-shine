@@ -198,7 +198,7 @@ const PricingSection = () => {
                                     : "border-border/50 bg-secondary/80"
                                 }`}
                               >
-                                <IconComponent className="h-5 w-5 text-primary" strokeWidth={1.8} />
+                                <IconComponent className="h-4 w-4 md:h-5 md:w-5 text-primary" strokeWidth={1.8} />
                               </div>
                             )}
 
