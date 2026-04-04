@@ -136,7 +136,7 @@ const PricingSection = () => {
                       type="button"
                       aria-pressed={selectedCategory === category.value}
                       onClick={() => setSelectedCategory(category.value)}
-                      className={`rounded-2xl border px-4 py-3 text-xs font-semibold whitespace-nowrap transition-all duration-300 sm:text-sm md:px-5 ${
+                      className={`rounded-2xl border px-3 py-2.5 md:px-4 md:py-3 text-xs font-semibold whitespace-nowrap transition-all duration-300 sm:text-sm md:px-5 ${
                         selectedCategory === category.value
                           ? "border-border bg-primary text-primary-foreground shadow-md"
                           : "border-border/50 bg-secondary/60 text-muted-foreground hover:border-border/80 hover:bg-secondary/60 hover:text-foreground"
