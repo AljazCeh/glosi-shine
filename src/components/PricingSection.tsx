@@ -150,7 +150,7 @@ const PricingSection = () => {
             </div>
           </div>
 
-          <div className="mx-auto max-w-7xl space-y-8 md:space-y-10">
+          <div className="mx-auto max-w-7xl space-y-5 md:space-y-10">
             <div className={sectionShellClass}>
               <div className="mb-6 flex flex-col gap-4 md:mb-8 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-2xl">
