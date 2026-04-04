@@ -13,7 +13,7 @@ const LocationSection = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           <div className="bg-card/80 border border-border/60 rounded-lg p-6 flex flex-col items-center text-center">
             <MapPin className="w-5 h-5 text-accent mb-3" strokeWidth={1.5} />
             <p className="text-foreground font-medium text-sm">Ljubljanska cesta 6</p>
