@@ -209,7 +209,7 @@ const PricingSection = () => {
                             )}
                           </div>
 
-                          <h3 className="text-2xl font-bold leading-tight text-foreground transition-colors group-hover:text-primary">
+                          <h3 className="text-lg md:text-2xl font-bold leading-tight text-foreground transition-colors group-hover:text-primary">
                             {service.title}
                           </h3>
                           <p className="mt-3 text-sm leading-6 text-muted-foreground">
