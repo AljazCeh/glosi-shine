@@ -385,7 +385,7 @@ const PricingSection = () => {
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-border/60 bg-secondary/50 p-6 shadow-md backdrop-blur-sm">
+                <div className="rounded-xl border border-border/60 bg-secondary/50 p-4 md:p-6 shadow-md backdrop-blur-sm">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/90">
                     Prilagojena ponudba
                   </p>
